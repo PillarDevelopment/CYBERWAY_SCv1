@@ -20,7 +20,7 @@ contract Farming is Ownable{
     uint256 internal tokenPerBlock = 2;
 
     mapping (uint256 => mapping (address => UserInfo)) public userInfo;
-    
+
     constructor(address _nft, address _token, uint256 _tokenPerBlock, uint256 _basicLockPeriod) {
         nft = ICyberWayNFT(_nft);
         cyberToken = IERC20(_token);

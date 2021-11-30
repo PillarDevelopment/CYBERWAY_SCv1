@@ -32,10 +32,15 @@ contract LootBoxFactory is Ownable, Random {
 
 
     function buyBox(uint256 _boxId) public payable {
-        // require(boxes[_boxId].price == msg.value);
-        _rand(_boxId);
-        //nft.mint(msg.sender); - параметры токена
+        require(_boxId < boxes.length, "This box isn't exist");
+        require(boxes[_boxId].price ==msg.value && boxes[_boxId].currentCount + 1 < boxes[_boxId].maxCount);
+
+        (uint256 tokenKind, uint256 tokenColor, uint256 tokenRand) = _rand(_boxId);
+
+        nft.mint(msg.sender, tokenKind, tokenColor, tokenRand);
         Address.sendValue(seller, msg.value);
+
+        boxes[_boxId].currentCount += 1;
     }
 
 
@@ -56,14 +61,16 @@ contract LootBoxFactory is Ownable, Random {
 
 
     function _addBox(uint16[6] memory rand_, uint256 price_, uint256 maxCount_) internal {
-
+        LootBox memory newBox = LootBox({rand: rand_, price: price_, maxCount: maxCount_, currentCount:0});
+        boxes.push(newBox);
     }
 
 
-    function _rand(uint256 _amount) internal returns(uint256) {
-        return randMod(_amount);
-    // должен вернуть 3 параметра токенов которые печатаем
-}
+    function _rand(uint256 _amount) internal returns(uint256 kind, uint256 color, uint256 rand) {
+        kind = randMod(_amount); // todo
+        color =  randMod(_amount); // todo
+        rand =  randMod(_amount); // todo
+    }
 }
 /**
 
