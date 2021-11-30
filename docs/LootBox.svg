@@ -1,0 +1,214 @@
+<?xml version="1.0" standalone="no"?>
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [  <!ENTITY quot "&#34;">  <!ENTITY amp "&#38;">  <!ENTITY apos "&#39;">  <!ENTITY lt "&#60;">  <!ENTITY gt "&#62;">  <!ENTITY nbsp "&#160;">  <!ENTITY iexcl "&#161;">  <!ENTITY cent "&#162;">  <!ENTITY pound "&#163;">  <!ENTITY curren "&#164;">  <!ENTITY yen "&#165;">  <!ENTITY brvbar "&#166;">  <!ENTITY sect "&#167;">  <!ENTITY uml "&#168;">  <!ENTITY copy "&#169;">  <!ENTITY ordf "&#170;">  <!ENTITY laquo "&#171;">  <!ENTITY not "&#172;">  <!ENTITY shy "&#173;">  <!ENTITY reg "&#174;">  <!ENTITY macr "&#175;">  <!ENTITY deg "&#176;">  <!ENTITY plusmn "&#177;">  <!ENTITY sup2 "&#178;">  <!ENTITY sup3 "&#179;">  <!ENTITY acute "&#180;">  <!ENTITY micro "&#181;">  <!ENTITY para "&#182;">  <!ENTITY middot "&#183;">  <!ENTITY cedil "&#184;">  <!ENTITY sup1 "&#185;">  <!ENTITY ordm "&#186;">  <!ENTITY raquo "&#187;">  <!ENTITY frac14 "&#188;">  <!ENTITY frac12 "&#189;">  <!ENTITY frac34 "&#190;">  <!ENTITY iquest "&#191;">  <!ENTITY Agrave "&#192;">  <!ENTITY Aacute "&#193;">  <!ENTITY Acirc "&#194;">  <!ENTITY Atilde "&#195;">  <!ENTITY Auml "&#196;">  <!ENTITY Aring "&#197;">  <!ENTITY AElig "&#198;">  <!ENTITY Ccedil "&#199;">  <!ENTITY Egrave "&#200;">  <!ENTITY Eacute "&#201;">  <!ENTITY Ecirc "&#202;">  <!ENTITY Euml "&#203;">  <!ENTITY Igrave "&#204;">  <!ENTITY Iacute "&#205;">  <!ENTITY Icirc "&#206;">  <!ENTITY Iuml "&#207;">  <!ENTITY ETH "&#208;">  <!ENTITY Ntilde "&#209;">  <!ENTITY Ograve "&#210;">  <!ENTITY Oacute "&#211;">  <!ENTITY Ocirc "&#212;">  <!ENTITY Otilde "&#213;">  <!ENTITY Ouml "&#214;">  <!ENTITY times "&#215;">  <!ENTITY Oslash "&#216;">  <!ENTITY Ugrave "&#217;">  <!ENTITY Uacute "&#218;">  <!ENTITY Ucirc "&#219;">  <!ENTITY Uuml "&#220;">  <!ENTITY Yacute "&#221;">  <!ENTITY THORN "&#222;">  <!ENTITY szlig "&#223;">  <!ENTITY agrave "&#224;">  <!ENTITY aacute "&#225;">  <!ENTITY acirc "&#226;">  <!ENTITY atilde "&#227;">  <!ENTITY auml "&#228;">  <!ENTITY aring "&#229;">  <!ENTITY aelig "&#230;">  <!ENTITY ccedil "&#231;">  <!ENTITY egrave "&#232;">  <!ENTITY eacute "&#233;">  <!ENTITY ecirc "&#234;">  <!ENTITY euml "&#235;">  <!ENTITY igrave "&#236;">  <!ENTITY iacute "&#237;">  <!ENTITY icirc "&#238;">  <!ENTITY iuml "&#239;">  <!ENTITY eth "&#240;">  <!ENTITY ntilde "&#241;">  <!ENTITY ograve "&#242;">  <!ENTITY oacute "&#243;">  <!ENTITY ocirc "&#244;">  <!ENTITY otilde "&#245;">  <!ENTITY ouml "&#246;">  <!ENTITY divide "&#247;">  <!ENTITY oslash "&#248;">  <!ENTITY ugrave "&#249;">  <!ENTITY uacute "&#250;">  <!ENTITY ucirc "&#251;">  <!ENTITY uuml "&#252;">  <!ENTITY yacute "&#253;">  <!ENTITY thorn "&#254;">  <!ENTITY yuml "&#255;">  <!ENTITY OElig "&#338;">  <!ENTITY oelig "&#339;">  <!ENTITY Scaron "&#352;">  <!ENTITY scaron "&#353;">  <!ENTITY Yuml "&#376;">  <!ENTITY fnof "&#402;">  <!ENTITY circ "&#710;">  <!ENTITY tilde "&#732;">  <!ENTITY Alpha "&#913;">  <!ENTITY Beta "&#914;">  <!ENTITY Gamma "&#915;">  <!ENTITY Delta "&#916;">  <!ENTITY Epsilon "&#917;">  <!ENTITY Zeta "&#918;">  <!ENTITY Eta "&#919;">  <!ENTITY Theta "&#920;">  <!ENTITY Iota "&#921;">  <!ENTITY Kappa "&#922;">  <!ENTITY Lambda "&#923;">  <!ENTITY Mu "&#924;">  <!ENTITY Nu "&#925;">  <!ENTITY Xi "&#926;">  <!ENTITY Omicron "&#927;">  <!ENTITY Pi "&#928;">  <!ENTITY Rho "&#929;">  <!ENTITY Sigma "&#931;">  <!ENTITY Tau "&#932;">  <!ENTITY Upsilon "&#933;">  <!ENTITY Phi "&#934;">  <!ENTITY Chi "&#935;">  <!ENTITY Psi "&#936;">  <!ENTITY Omega "&#937;">  <!ENTITY alpha "&#945;">  <!ENTITY beta "&#946;">  <!ENTITY gamma "&#947;">  <!ENTITY delta "&#948;">  <!ENTITY epsilon "&#949;">  <!ENTITY zeta "&#950;">  <!ENTITY eta "&#951;">  <!ENTITY theta "&#952;">  <!ENTITY iota "&#953;">  <!ENTITY kappa "&#954;">  <!ENTITY lambda "&#955;">  <!ENTITY mu "&#956;">  <!ENTITY nu "&#957;">  <!ENTITY xi "&#958;">  <!ENTITY omicron "&#959;">  <!ENTITY pi "&#960;">  <!ENTITY rho "&#961;">  <!ENTITY sigmaf "&#962;">  <!ENTITY sigma "&#963;">  <!ENTITY tau "&#964;">  <!ENTITY upsilon "&#965;">  <!ENTITY phi "&#966;">  <!ENTITY chi "&#967;">  <!ENTITY psi "&#968;">  <!ENTITY omega "&#969;">  <!ENTITY thetasym "&#977;">  <!ENTITY upsih "&#978;">  <!ENTITY piv "&#982;">  <!ENTITY ensp "&#8194;">  <!ENTITY emsp "&#8195;">  <!ENTITY thinsp "&#8201;">  <!ENTITY zwnj "&#8204;">  <!ENTITY zwj "&#8205;">  <!ENTITY lrm "&#8206;">  <!ENTITY rlm "&#8207;">  <!ENTITY ndash "&#8211;">  <!ENTITY mdash "&#8212;">  <!ENTITY lsquo "&#8216;">  <!ENTITY rsquo "&#8217;">  <!ENTITY sbquo "&#8218;">  <!ENTITY ldquo "&#8220;">  <!ENTITY rdquo "&#8221;">  <!ENTITY bdquo "&#8222;">  <!ENTITY dagger "&#8224;">  <!ENTITY Dagger "&#8225;">  <!ENTITY bull "&#8226;">  <!ENTITY hellip "&#8230;">  <!ENTITY permil "&#8240;">  <!ENTITY prime "&#8242;">  <!ENTITY Prime "&#8243;">  <!ENTITY lsaquo "&#8249;">  <!ENTITY rsaquo "&#8250;">  <!ENTITY oline "&#8254;">  <!ENTITY frasl "&#8260;">  <!ENTITY euro "&#8364;">  <!ENTITY image "&#8465;">  <!ENTITY weierp "&#8472;">  <!ENTITY real "&#8476;">  <!ENTITY trade "&#8482;">  <!ENTITY alefsym "&#8501;">  <!ENTITY larr "&#8592;">  <!ENTITY uarr "&#8593;">  <!ENTITY rarr "&#8594;">  <!ENTITY darr "&#8595;">  <!ENTITY harr "&#8596;">  <!ENTITY crarr "&#8629;">  <!ENTITY lArr "&#8656;">  <!ENTITY uArr "&#8657;">  <!ENTITY rArr "&#8658;">  <!ENTITY dArr "&#8659;">  <!ENTITY hArr "&#8660;">  <!ENTITY forall "&#8704;">  <!ENTITY part "&#8706;">  <!ENTITY exist "&#8707;">  <!ENTITY empty "&#8709;">  <!ENTITY nabla "&#8711;">  <!ENTITY isin "&#8712;">  <!ENTITY notin "&#8713;">  <!ENTITY ni "&#8715;">  <!ENTITY prod "&#8719;">  <!ENTITY sum "&#8721;">  <!ENTITY minus "&#8722;">  <!ENTITY lowast "&#8727;">  <!ENTITY radic "&#8730;">  <!ENTITY prop "&#8733;">  <!ENTITY infin "&#8734;">  <!ENTITY ang "&#8736;">  <!ENTITY and "&#8743;">  <!ENTITY or "&#8744;">  <!ENTITY cap "&#8745;">  <!ENTITY cup "&#8746;">  <!ENTITY int "&#8747;">  <!ENTITY there4 "&#8756;">  <!ENTITY sim "&#8764;">  <!ENTITY cong "&#8773;">  <!ENTITY asymp "&#8776;">  <!ENTITY ne "&#8800;">  <!ENTITY equiv "&#8801;">  <!ENTITY le "&#8804;">  <!ENTITY ge "&#8805;">  <!ENTITY sub "&#8834;">  <!ENTITY sup "&#8835;">  <!ENTITY nsub "&#8836;">  <!ENTITY sube "&#8838;">  <!ENTITY supe "&#8839;">  <!ENTITY oplus "&#8853;">  <!ENTITY otimes "&#8855;">  <!ENTITY perp "&#8869;">  <!ENTITY sdot "&#8901;">  <!ENTITY lceil "&#8968;">  <!ENTITY rceil "&#8969;">  <!ENTITY lfloor "&#8970;">  <!ENTITY rfloor "&#8971;">  <!ENTITY lang "&#9001;">  <!ENTITY rang "&#9002;">  <!ENTITY loz "&#9674;">  <!ENTITY spades "&#9824;">  <!ENTITY clubs "&#9827;">  <!ENTITY hearts "&#9829;">  <!ENTITY diams "&#9830;"> ]><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="535pt" height="678pt" viewBox="0.00 0.00 535.40 678.00">
+<g id="graph0" class="graph" transform="translate(4,674) scale(1)" data-name="G">
+
+<polygon fill="#2e3e56" stroke="transparent" points="-4,4 -4,-674 531.3985,-674 531.3985,4 -4,4" style=""></polygon>
+<g id="clust1" class="cluster">
+<title style="">clusterLootBoxFactory</title>
+<path fill="#445773" stroke="#445773" d="M20,-178C20,-178 507.3985,-178 507.3985,-178 513.3985,-178 519.3985,-184 519.3985,-190 519.3985,-190 519.3985,-513 519.3985,-513 519.3985,-519 513.3985,-525 507.3985,-525 507.3985,-525 20,-525 20,-525 14,-525 8,-519 8,-513 8,-513 8,-190 8,-190 8,-184 14,-178 20,-178" style=""></path>
+<text text-anchor="middle" x="263.6993" y="-508.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">LootBoxFactory</text>
+</g>
+<g id="clust2" class="cluster">
+<title style="">clusterICyberWayNFT</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M266.4627,-93C266.4627,-93 349.9516,-93 349.9516,-93 355.9516,-93 361.9516,-99 361.9516,-105 361.9516,-105 361.9516,-158 361.9516,-158 361.9516,-164 355.9516,-170 349.9516,-170 349.9516,-170 266.4627,-170 266.4627,-170 260.4627,-170 254.4627,-164 254.4627,-158 254.4627,-158 254.4627,-105 254.4627,-105 254.4627,-99 260.4627,-93 266.4627,-93" style=""></path>
+<text text-anchor="middle" x="308.2072" y="-153.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">ICyberWayNFT</text>
+</g>
+<g id="clust3" class="cluster">
+<title style="">clusterAddress</title>
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M260.4145,-8C260.4145,-8 355.9998,-8 355.9998,-8 361.9998,-8 367.9998,-14 367.9998,-20 367.9998,-20 367.9998,-73 367.9998,-73 367.9998,-79 361.9998,-85 355.9998,-85 355.9998,-85 260.4145,-85 260.4145,-85 254.4145,-85 248.4145,-79 248.4145,-73 248.4145,-73 248.4145,-20 248.4145,-20 248.4145,-14 254.4145,-8 260.4145,-8" style=""></path>
+<text text-anchor="middle" x="308.2072" y="-68.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">Address</text>
+</g>
+<g id="clust4" class="cluster">
+<title style="">cluster_01</title>
+<polygon fill="#2e3e56" stroke="#000000" points="33.9439,-533 33.9439,-662 343.2072,-662 343.2072,-533 33.9439,-533" style=""></polygon>
+<text text-anchor="middle" x="188.5755" y="-645.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Legend</text>
+</g>
+<!-- LootBoxFactory.&lt;Constructor&gt; -->
+<g id="node1" class="node" data-name="LootBoxFactory.&lt;Constructor&gt;">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="106.9439" cy="-474" rx="67.5419" ry="18" style=""></ellipse>
+<text text-anchor="middle" x="106.9439" y="-469.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&lt;Constructor&gt;</text>
+</g>
+<!-- LootBoxFactory._addBox -->
+<g id="node7" class="node" data-name="LootBoxFactory._addBox">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="308.2072" cy="-366" rx="45.8118" ry="18" style=""></ellipse>
+<text text-anchor="middle" x="308.2072" y="-361.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">_addBox</text>
+</g>
+<!-- LootBoxFactory.&lt;Constructor&gt;&#45;&gt;LootBoxFactory._addBox -->
+<g id="edge3" class="edge" data-name="LootBoxFactory.&lt;Constructor&gt;->LootBoxFactory._addBox">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M118.6921,-456.0893C137.1894,-444.0694 173.5027,-437.9931 197.8877,-420 221.0976,-402.874 211.2008,-383.8131 233.8877,-366 248.3105,-354.6757 267.9165,-347.818 283.3698,-347.6847" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="283.4363,-351.2123 293.7548,-348.8083 284.1893,-344.2529 283.4363,-351.2123" style=""></polygon>
+</g>
+<!-- LootBoxFactory.&lt;Constructor&gt;&#45;&gt;LootBoxFactory._addBox -->
+<g id="edge4" class="edge" data-name="LootBoxFactory.&lt;Constructor&gt;->LootBoxFactory._addBox">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M148.6352,-459.627C165.1523,-455.0168 183.5748,-448.5612 197.8877,-438 221.0976,-420.874 211.2008,-401.8131 233.8877,-384 239.6778,-379.4538 246.3031,-375.6276 253.1598,-372.5017" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="254.6469,-375.6755 262.5965,-368.6716 252.0143,-369.1894 254.6469,-375.6755" style=""></polygon>
+</g>
+<!-- LootBoxFactory.&lt;Constructor&gt;&#45;&gt;LootBoxFactory._addBox -->
+<g id="edge5" class="edge" data-name="LootBoxFactory.&lt;Constructor&gt;->LootBoxFactory._addBox">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M172.6757,-469.4246C181.6349,-466.0043 190.3337,-461.5739 197.8877,-456 221.0976,-438.874 211.2008,-419.8131 233.8877,-402 244.2818,-393.8389 257.3678,-387.9977 269.6515,-383.407" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="271.0243,-386.6333 279.264,-379.9731 268.6693,-380.0413 271.0243,-386.6333" style=""></polygon>
+</g>
+<!-- LootBoxFactory.&lt;Constructor&gt;&#45;&gt;LootBoxFactory._addBox -->
+<g id="edge6" class="edge" data-name="LootBoxFactory.&lt;Constructor&gt;->LootBoxFactory._addBox">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M122.869,-491.5303C142.2611,-497.1513 175.2256,-490.7218 197.8877,-474 221.0976,-456.874 211.2008,-437.8131 233.8877,-420 250.6758,-406.8185 274.4865,-399.6889 290.5964,-390.073" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="292.946,-392.6977 299.0805,-384.0595 288.8981,-386.9868 292.946,-392.6977" style=""></polygon>
+</g>
+<!-- LootBoxFactory.ICyberWayNFT -->
+<g id="node9" class="node" data-name="LootBoxFactory.ICyberWayNFT">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="308.2072" cy="-420" rx="74.1393" ry="18" style=""></ellipse>
+<text text-anchor="middle" x="308.2072" y="-415.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">ICyberWayNFT</text>
+</g>
+<!-- LootBoxFactory.&lt;Constructor&gt;&#45;&gt;LootBoxFactory.ICyberWayNFT -->
+<g id="edge1" class="edge" data-name="LootBoxFactory.&lt;Constructor&gt;->LootBoxFactory.ICyberWayNFT">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M154.6405,-461.2028C182.734,-453.6651 218.5221,-444.063 248.4811,-436.0248" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="249.6467,-439.3359 258.3981,-433.364 247.8327,-432.5751 249.6467,-439.3359" style=""></polygon>
+</g>
+<!-- LootBoxFactory.payable -->
+<g id="node10" class="node" data-name="LootBoxFactory.payable">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="308.2072" cy="-474" rx="41.1316" ry="18" style=""></ellipse>
+<text text-anchor="middle" x="308.2072" y="-469.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">payable</text>
+</g>
+<!-- LootBoxFactory.&lt;Constructor&gt;&#45;&gt;LootBoxFactory.payable -->
+<g id="edge2" class="edge" data-name="LootBoxFactory.&lt;Constructor&gt;->LootBoxFactory.payable">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M174.5215,-474C201.4204,-474 231.8638,-474 256.8973,-474" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="256.913,-477.5001 266.913,-474 256.913,-470.5001 256.913,-477.5001" style=""></polygon>
+</g>
+<!-- LootBoxFactory.buyBox -->
+<g id="node2" class="node" data-name="LootBoxFactory.buyBox">
+
+<ellipse fill="#ff9797" stroke="#a52a2a" stroke-width="3" cx="106.9439" cy="-204" rx="41.7385" ry="18" style=""></ellipse>
+<text text-anchor="middle" x="106.9439" y="-199.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">buyBox</text>
+</g>
+<!-- LootBoxFactory._rand -->
+<g id="node8" class="node" data-name="LootBoxFactory._rand">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="308.2072" cy="-204" rx="33.0469" ry="18" style=""></ellipse>
+<text text-anchor="middle" x="308.2072" y="-199.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">_rand</text>
+</g>
+<!-- LootBoxFactory.buyBox&#45;&gt;LootBoxFactory._rand -->
+<g id="edge7" class="edge" data-name="LootBoxFactory.buyBox->LootBoxFactory._rand">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M148.6457,-204C182.5578,-204 230.2557,-204 264.6564,-204" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="264.8756,-207.5001 274.8756,-204 264.8756,-200.5001 264.8756,-207.5001" style=""></polygon>
+</g>
+<!-- ICyberWayNFT.mint -->
+<g id="node12" class="node" data-name="ICyberWayNFT.mint">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="308.2072" cy="-119" rx="28.991" ry="18" style=""></ellipse>
+<text text-anchor="middle" x="308.2072" y="-114.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">mint</text>
+</g>
+<!-- LootBoxFactory.buyBox&#45;&gt;ICyberWayNFT.mint -->
+<g id="edge8" class="edge" data-name="LootBoxFactory.buyBox->ICyberWayNFT.mint">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M137.075,-191.2746C173.9181,-175.7146 236.0982,-149.454 274.498,-133.2365" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="276.3373,-136.2591 284.1877,-129.1442 273.6138,-129.8106 276.3373,-136.2591" style=""></polygon>
+</g>
+<!-- Address.sendValue -->
+<g id="node13" class="node" data-name="Address.sendValue">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="308.2072" cy="-34" rx="51.5862" ry="18" style=""></ellipse>
+<text text-anchor="middle" x="308.2072" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">sendValue</text>
+</g>
+<!-- LootBoxFactory.buyBox&#45;&gt;Address.sendValue -->
+<g id="edge9" class="edge" data-name="LootBoxFactory.buyBox->Address.sendValue">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M124.1192,-187.437C148.078,-164.5678 193.1787,-122.3657 233.8877,-89 247.534,-77.8153 263.1636,-66.0953 276.5573,-56.3618" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="278.9294,-58.9664 284.9927,-50.278 274.8347,-53.2889 278.9294,-58.9664" style=""></polygon>
+</g>
+<!-- LootBoxFactory.&lt;Receive Ether&gt; -->
+<g id="node3" class="node" data-name="LootBoxFactory.<Receive Ether>">
+
+<ellipse fill="#ffbdb9" stroke="#a52a2a" stroke-width="3" cx="106.9439" cy="-366" rx="76.2086" ry="18" style=""></ellipse>
+<text text-anchor="middle" x="106.9439" y="-361.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&lt;Receive Ether&gt;</text>
+</g>
+<!-- LootBoxFactory.getBox -->
+<g id="node4" class="node" data-name="LootBoxFactory.getBox">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="106.9439" cy="-312" rx="38.8652" ry="18" style=""></ellipse>
+<text text-anchor="middle" x="106.9439" y="-307.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">getBox</text>
+</g>
+<!-- LootBoxFactory.updateSellerAddress -->
+<g id="node5" class="node" data-name="LootBoxFactory.updateSellerAddress">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="106.9439" cy="-258" rx="90.8878" ry="18" style=""></ellipse>
+<text text-anchor="middle" x="106.9439" y="-253.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">updateSellerAddress</text>
+</g>
+<!-- LootBoxFactory.addNewBox -->
+<g id="node6" class="node" data-name="LootBoxFactory.addNewBox">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="106.9439" cy="-420" rx="59.1141" ry="18" style=""></ellipse>
+<text text-anchor="middle" x="106.9439" y="-415.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">addNewBox</text>
+</g>
+<!-- LootBoxFactory.addNewBox&#45;&gt;LootBoxFactory._addBox -->
+<g id="edge10" class="edge" data-name="LootBoxFactory.addNewBox->LootBoxFactory._addBox">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M151.6107,-408.0156C183.8307,-399.3709 227.274,-387.7148 260.2292,-378.8727" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="261.3446,-382.1973 270.096,-376.2254 259.5305,-375.4365 261.3446,-382.1973" style=""></polygon>
+</g>
+<!-- LootBoxFactory.randMod -->
+<g id="node11" class="node" data-name="LootBoxFactory.randMod">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="464.9626" cy="-204" rx="46.372" ry="18" style=""></ellipse>
+<text text-anchor="middle" x="464.9626" y="-199.8" font-family="Times,serif" font-size="14.00" fill="#000000" style="">randMod</text>
+</g>
+<!-- LootBoxFactory._rand&#45;&gt;LootBoxFactory.randMod -->
+<g id="edge11" class="edge" data-name="LootBoxFactory._rand->LootBoxFactory.randMod">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M335.1544,-193.516C358.2076,-190.2937 391.8889,-189.6534 419.1656,-191.5952" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="419.007,-195.0944 429.2705,-192.4658 419.6079,-188.1203 419.007,-195.0944" style=""></polygon>
+</g>
+<!-- LootBoxFactory._rand&#45;&gt;LootBoxFactory.randMod -->
+<g id="edge12" class="edge" data-name="LootBoxFactory._rand->LootBoxFactory.randMod">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M341.4509,-204C360.8568,-204 385.8624,-204 408.293,-204" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="408.3883,-207.5001 418.3883,-204 408.3883,-200.5001 408.3883,-207.5001" style=""></polygon>
+</g>
+<!-- LootBoxFactory._rand&#45;&gt;LootBoxFactory.randMod -->
+<g id="edge13" class="edge" data-name="LootBoxFactory._rand->LootBoxFactory.randMod">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M335.1544,-214.484C358.2076,-217.7063 391.8889,-218.3466 419.1656,-216.4048" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="419.6079,-219.8797 429.2705,-215.5342 419.007,-212.9056 419.6079,-219.8797" style=""></polygon>
+</g>
+<!-- key -->
+<g id="node14" class="node" data-name="key">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="171.9439,-629 41.9439,-629 41.9439,-541 171.9439,-541 171.9439,-629" style=""></polygon>
+<text text-anchor="start" x="91.5799" y="-610.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Internal Call</text>
+<text text-anchor="start" x="87.6879" y="-590.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">External Call</text>
+<text text-anchor="start" x="65.1493" y="-570.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Defined Contract</text>
+<text text-anchor="start" x="51.5466" y="-550.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">Undefined Contract</text>
+</g>
+<!-- key2 -->
+<g id="node15" class="node" data-name="key2">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="335.2072,-629 281.2072,-629 281.2072,-541 335.2072,-541 335.2072,-629" style=""></polygon>
+<text text-anchor="start" x="295.9663" y="-610.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&nbsp;&nbsp;&nbsp;</text>
+<text text-anchor="start" x="295.9663" y="-590.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="#445773" stroke="transparent" points="294.2072,-565 294.2072,-585 322.2072,-585 322.2072,-565 294.2072,-565" style=""></polygon>
+<text text-anchor="start" x="295.9663" y="-570.4" font-family="Times,serif" font-size="14.00" fill="#000000" style="">&nbsp;&nbsp;&nbsp;</text>
+<polygon fill="none" stroke="#e8726d" points="296.2072,-547 296.2072,-563 320.2072,-563 320.2072,-547 296.2072,-547" style=""></polygon>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge14" class="edge" data-name="key->key2">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M163.9439,-615C218.3333,-615 234.4005,-615 284.1494,-615" style=""></path>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="284.2072,-618.5001 294.2072,-615 284.2071,-611.5001 284.2072,-618.5001" style=""></polygon>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge15" class="edge" data-name="key->key2">
+
+<path fill="none" stroke="#ffffff" stroke-width="2" d="M163.9439,-595C218.3333,-595 234.4005,-595 284.1494,-595" style=""></path>
+<polygon fill="#ffffff" stroke="#ffffff" stroke-width="2" points="284.2072,-598.5001 294.2072,-595 284.2071,-591.5001 284.2072,-598.5001" style=""></polygon>
+</g>
+</g>
+</svg>
