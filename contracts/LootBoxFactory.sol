@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./ICyberWayNFT.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
+
+import "./ICyberWayNFT.sol";
 import "./utils/Random.sol";
 
 contract LootBoxFactory is Ownable, Random {
@@ -16,10 +17,13 @@ contract LootBoxFactory is Ownable, Random {
     }
 
     ICyberWayNFT public nft;
-
     LootBox[] public boxes;
 
     address payable public seller;
+
+    event NewBoxAdded(uint256 price, uint256 maxCount, uint256 boxId);
+    event NewBoxBought(address buyer, uint256 boxId);
+    event NewSeller(address payable newSeller);
 
     constructor(address _nft) {
         nft = ICyberWayNFT(_nft);
@@ -32,15 +36,22 @@ contract LootBoxFactory is Ownable, Random {
 
 
     function buyBox(uint256 _boxId) public payable {
-        require(_boxId < boxes.length, "This box isn't exist");
-        require(boxes[_boxId].price ==msg.value && boxes[_boxId].currentCount + 1 < boxes[_boxId].maxCount);
+        require(_boxId < boxes.length, "LootBoxFactory: This box isn't exist");
+        require(boxes[_boxId].price == msg.value, "LootBoxFactory: incorrect value");
+        require(boxes[_boxId].currentCount + 1 < boxes[_boxId].maxCount, "LootBoxFactory: box limit is exhausted");
 
-        (uint256 tokenKind, uint256 tokenColor, uint256 tokenRand) = _rand(_boxId);
+        (uint256 tokenKind, uint256 tokenColor, uint256 tokenRand) = _rand(_boxId); // got token parameters
 
         nft.mint(msg.sender, tokenKind, tokenColor, tokenRand);
         Address.sendValue(seller, msg.value);
 
         boxes[_boxId].currentCount += 1;
+        emit NewBoxBought(msg.sender, _boxId);
+    }
+
+
+    receive() external payable {
+        revert();
     }
 
 
@@ -52,11 +63,13 @@ contract LootBoxFactory is Ownable, Random {
     function updateSellerAddress(address payable newSeller_) public onlyOwner {
         require(newSeller_ != address(0x0));
         seller = newSeller_;
+        emit NewSeller(newSeller_);
     }
 
 
     function addNewBox(uint16[6] memory rand_, uint256 price_, uint256 maxCount_) public onlyOwner {
         _addBox(rand_, price_, maxCount_);
+        emit NewBoxAdded(price_, maxCount_, boxes.length);
     }
 
 
@@ -66,6 +79,9 @@ contract LootBoxFactory is Ownable, Random {
     }
 
 
+    /*
+    Getting token parameters
+    */
     function _rand(uint256 _amount) internal returns(uint256 kind, uint256 color, uint256 rand) {
         kind = randMod(_amount); // todo
         color =  randMod(_amount); // todo
@@ -73,8 +89,7 @@ contract LootBoxFactory is Ownable, Random {
     }
 }
 /**
-
-contract RacersBoxFactory is TreasurerMigratable, Random, WhitelistMigratable {
+contract RacersBoxFactory {
 
     event NewBoxBought(address buyer, uint16 boxType);
     event BoxGifted(address sender, uint16 boxType);
@@ -93,11 +108,6 @@ contract RacersBoxFactory is TreasurerMigratable, Random, WhitelistMigratable {
         price[1] = 300000000000000000; // car common
         price[2] = 600000000000000000; // car plus
         price[3] = 1200000000000000000; // car pro
-
-        // TODO temporary unuse
-        // price[3] = 9600000000000000000; // part common
-        // price[4] = 1200000000000000000; // part plus
-        // price[5] = 9600000000000000000; // part pro
     }
 
 
@@ -111,7 +121,6 @@ contract RacersBoxFactory is TreasurerMigratable, Random, WhitelistMigratable {
         require(msg.value >= price[_boxType], "Insufficient equity");
 
         _issue(msg.sender, _boxType);
-
 
         treasurer.transfer(balance);
         emit NewBoxBought(msg.sender, _boxType);
@@ -127,18 +136,8 @@ contract RacersBoxFactory is TreasurerMigratable, Random, WhitelistMigratable {
     }
 
 
-    function setBoxPrices(uint16 _type, uint256 _price) public onlyOwner {
-        price[_type] = _price;
-    }
-
-
     function getBoxPrices() public view returns(uint256, uint256, uint256) {
         return(price[1], price[2], price[3]);
-    }
-
-
-    function () public payable {
-        revert();
     }
 
 
@@ -153,7 +152,6 @@ contract RacersBoxFactory is TreasurerMigratable, Random, WhitelistMigratable {
         uint16[3] memory elements;
 
 
-        // Box with rarity Cars
         if (_boxType == 1) {
             elements = _generateRarities( [750, 200, 48, 2] );
             _produceCarBox(_to, elements);
@@ -233,7 +231,5 @@ contract RacersBoxFactory is TreasurerMigratable, Random, WhitelistMigratable {
         }
         return result;
     }
-
-    uint256[50] private ______gap;
 }
 */
