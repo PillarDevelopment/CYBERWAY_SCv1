@@ -14,6 +14,10 @@ contract LootBoxFactory is Ownable, Random {
         uint256 rand;
         uint256 price;
     }
+    // white 33,00,  03,30, 00,20,  57,00,  06,00,  00,50,  0
+    // Blue 27,00, 09,00, 00,55, 47,00, 15,00, 01,40, 00,20
+    // Black 27,00 18,00 03,00 27,00 20,00 04,00 01,00
+    // Gold
 
     ICyberWayNFT public nft;
 
