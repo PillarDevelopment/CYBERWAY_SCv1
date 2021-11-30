@@ -6,18 +6,14 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 import "./utils/Random.sol";
 
-
 contract LootBoxFactory is Ownable, Random {
 
     struct LootBox {
-        uint256 colorFrame;
-        uint256 rand;
+        uint16[6] rand;
         uint256 price;
+        uint256 maxCount;
+        uint256 currentCount;
     }
-    // white 33,00,  03,30, 00,20,  57,00,  06,00,  00,50,  0
-    // Blue 27,00, 09,00, 00,55, 47,00, 15,00, 01,40, 00,20
-    // Black 27,00 18,00 03,00 27,00 20,00 04,00 01,00
-    // Gold
 
     ICyberWayNFT public nft;
 
@@ -28,7 +24,12 @@ contract LootBoxFactory is Ownable, Random {
     constructor(address _nft) {
         nft = ICyberWayNFT(_nft);
         seller = payable(msg.sender);
+        _addBox([330, 33, 2, 570, 60, 5], 64000000000000000, 20000);
+        _addBox([270, 90, 6, 470, 150, 14], 160000000000000000, 5000);
+        _addBox([270, 180, 40, 270, 200, 40], 430000000000000000, 1000);
+        _addBox([0, 250, 350, 0, 0, 400], 1050000000000000000, 400);
     }
+
 
     function buyBox(uint256 _boxId) public payable {
         // require(boxes[_boxId].price == msg.value);
@@ -37,22 +38,6 @@ contract LootBoxFactory is Ownable, Random {
         Address.sendValue(seller, msg.value);
     }
 
-    function addNewBox(uint256 colorFrame_, uint256 rand_, uint256 price_)public onlyOwner {
-        LootBox memory box = LootBox(colorFrame_, rand_, price_);
-        boxes.push(box);
-    }
-
-    function modifyBox(uint256 _boxId,
-                        uint256 newColorFrame_,
-                        uint256 newRand_,
-                        uint256 newPrice_) public onlyOwner {
-        boxes[_boxId] = LootBox(newColorFrame_, newRand_, newPrice_);
-    }
-
-   // function removeBox(uint256 _boxId) public onlyOwner {
-   //     delete boxes[_boxId];
-        //boxes.pop(_boxId);
-   // }
 
     function getBox(uint256 boxId_) public view returns(LootBox memory) {
         return boxes[boxId_];
@@ -64,10 +49,21 @@ contract LootBoxFactory is Ownable, Random {
         seller = newSeller_;
     }
 
+
+    function addNewBox(uint16[6] memory rand_, uint256 price_, uint256 maxCount_) public onlyOwner {
+        _addBox(rand_, price_, maxCount_);
+    }
+
+
+    function _addBox(uint16[6] memory rand_, uint256 price_, uint256 maxCount_) internal {
+
+    }
+
+
     function _rand(uint256 _amount) internal returns(uint256) {
         return randMod(_amount);
-        // должен вернуть 3 параметра токенов которые печатаем
-    }
+    // должен вернуть 3 параметра токенов которые печатаем
+}
 }
 /**
 
