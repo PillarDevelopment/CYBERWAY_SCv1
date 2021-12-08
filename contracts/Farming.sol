@@ -5,6 +5,7 @@ import "./ICyberWayNFT.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
+
 contract Farming is Ownable{
 
     mapping(address => mapping(uint256 => uint256))public userInfo; //  user => (tokenId => timeToLock)
@@ -12,7 +13,7 @@ contract Farming is Ownable{
     IERC20 public cyberToken;
     ICyberWayNFT public cyberNft;
 
-    uint256 public basicLockPeriod = 43200; //blocks -  14 sec per block / 7 days
+    uint256 public basicLockPeriod = 201600; //blocks -  3 sec per block / 7 days
     uint256 private _tokenPerBlock = 2e18; // 2 tokens
 
     event NFTDeposited(address sender, uint256 id, uint256 startBlock);
@@ -35,25 +36,29 @@ contract Farming is Ownable{
 
 
     function withdrawFarmingToken(uint256 id) public {
-        require(userInfo[msg.sender][id] + basicLockPeriod >= block.number, "Farming: incorrect period");
+        require(userInfo[msg.sender][id] + basicLockPeriod <= block.number, "Farming: incorrect period");
         require(userInfo[msg.sender][id] != 0, "Farming: Sender isn't token's owner");
 
         uint256 amount = pendingToken(msg.sender, id);
         userInfo[msg.sender][id] = 0;
 
-        cyberToken.transferFrom(address(this), msg.sender, amount);
+        cyberToken.transfer(msg.sender, amount);
         cyberNft.transferFrom(address(this), msg.sender, id);
         emit NFTWithdrawn(msg.sender, id, amount);
     }
 
 
-    function setTokenPerBlock(uint256 _newAmount) public onlyOwner{
-        _tokenPerBlock = _newAmount;
+    // WARNING: don't update, when you have active farmers, you will have incorrect amount
+    function setTokenPerBlock(uint256 newAmount) public onlyOwner {
+        require(newAmount != 0, "Farming:");
+        _tokenPerBlock = newAmount;
     }
 
 
-    function approvalNFTTransfers() public onlyOwner {
-        cyberNft.setApprovalForAll(address(this), true);
+    // WARNING: don't update, when you have active farmers, you will have incorrect amount
+    function setBasicLockPeriod(uint256 newAmount) public onlyOwner {
+        require(newAmount != 0, "Farming: zero amount");
+        basicLockPeriod = newAmount;
     }
 
 
@@ -66,12 +71,12 @@ contract Farming is Ownable{
 
 
     function pendingToken(address user, uint256 id) public view returns (uint256) {
-        return (block.number - userInfo[user][id]) * basicLockPeriod;
+        require(userInfo[user][id] != 0, "Farming: User doesn't exist");
+        return (block.number - userInfo[user][id]) * _tokenPerBlock;
     }
 
 
     function getCurrentBlockReward() public view returns (uint256) {
         return _tokenPerBlock;
     }
-
 }
