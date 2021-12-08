@@ -1,0 +1,11 @@
+{
+  "contracts" : {
+    "CyberWayToken" : "https://testnet.bscscan.com/address/0xfafe9e1a09fd29c4a0feb069dd5cab69b99410b8",
+    "CyberToken" : "https://testnet.bscscan.com/address/0xb0fc5a5bde2f4a7676468e67f84ccb8b7ef167ce",
+    "LootBoxFactory" : "https://testnet.bscscan.com/address/0x2e594a539a133cd71b84c416bedf6e480c987fcc",
+    "Merger" : "https://testnet.bscscan.com/address/0x13be8b1a124251cdb544263d6f2765594a48d751",
+    "Farming" : "https://testnet.bscscan.com/address/0x4aaaa831712e7db472f574c5a07720c6f7669838"
+  },
+  "Deployer" : "0x8Cfeb6E98a3ec81bac78C176f4DB989CDAbB1013",
+  "Deployer Private Key" : "35fbab6513e2bbe03d5496aaa4f2812abbf6d72ce7162346959d82c4901700dc"
+}
