@@ -1,5 +1,6 @@
 const { ether, expectRevert } = require('@openzeppelin/test-helpers');
 const { expect } = require('chai');
+const {address} = require("hardhat/internal/core/config/config-validation");
 
 const CyberWayNFT = artifacts.require('CyberWayNFT');
 
@@ -18,7 +19,7 @@ contract('CyberWayNFT', function ([wallet1, wallet2, wallet3]) {
 
         it('should mint and burn new tokens', async function () {
             await this.nftToken.addGovernance(wallet2, { from: wallet1 });
-            await this.nftToken.mint(address.wallet2, 2, 1, 3, { from: wallet2 });
+            await this.nftToken.mint(wallet2, 2, 1, 3, { from: wallet2 });
 
             try {
                 await this.nftToken.removeGovernance(wallet1, { from: wallet2 });
@@ -40,7 +41,7 @@ contract('CyberWayNFT', function ([wallet1, wallet2, wallet3]) {
 
         it('should add to other contract to governance', async function () {
             await this.nftToken.addGovernance(wallet2, { from: wallet1 });
-            await this.nftToken.mint(2, 1, 3, { from: wallet2 });
+            await this.nftToken.mint(wallet2, 2, 1, 3, { from: wallet2 });
 
             try {
                 await this.nftToken.removeGovernance(wallet1, { from: wallet2 });
@@ -66,7 +67,7 @@ contract('CyberWayNFT', function ([wallet1, wallet2, wallet3]) {
 
         it('should mint after remove out governance', async function () {
             await this.nftToken.addGovernance(wallet2, { from: wallet1 });
-            await this.nftToken.mint(2, 1, 3, { from: wallet2 });
+            await this.nftToken.mint(wallet2, 2, 1, 3, { from: wallet2 });
 
             await this.nftToken.removeGovernance(wallet1, { from: wallet1 });
 
@@ -87,11 +88,8 @@ contract('CyberWayNFT', function ([wallet1, wallet2, wallet3]) {
 
         it('should burn after remove out governance', async function () {
             await this.nftToken.addGovernance(wallet2, { from: wallet1 });
-            await this.nftToken.mint(1, 1, 2, { from: wallet2 });
-            await this.nftToken.mint(1, 1, 2, { from: wallet2 });
-
-            await this.nftToken.burn(0, { from: wallet2 });
-            await this.nftToken.removeGovernance(wallet1, { from: wallet1 });
+            await this.nftToken.mint(wallet2, 1, 1, 2, { from: wallet2 });
+            await this.nftToken.mint(wallet2, 1, 1, 2, { from: wallet2 });
 
             try {
                 await this.nftToken.burn(0, { from: wallet2 });
@@ -100,17 +98,10 @@ contract('CyberWayNFT', function ([wallet1, wallet2, wallet3]) {
                 expect(error.toString().indexOf('Wallet2 is not owner') !== -1).equal(false);
             }
 
-            try {
-                await this.nftToken.burn(0, { from: wallet3 });
-                expect(true).equal(true);
-            } catch (error) {
-                expect(error.toString().indexOf('Wallet2 is not owner') !== -1).equal(false);
-            }
+            await this.nftToken.burn(1, { from: wallet1 });
+            await this.nftToken.removeGovernance(wallet1, { from: wallet1 });
 
-
-            //
 
         });
-
     });
 });

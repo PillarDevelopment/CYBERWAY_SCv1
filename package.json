@@ -1,7 +1,7 @@
 {
-  "name": "cyber_way_nft",
-  "version": "0.1.0",
-  "description": "cyber_way_nft",
+  "name": "@decommas/poc-strategy",
+  "version": "0.0.2",
+  "description": "PoC Strategy",
   "main": "hardhat.config.js",
   "directories": {
     "test": "test"
@@ -19,7 +19,14 @@
     "lint:sol:fix": "solhint --max-warnings 0 \"contracts/**/*.sol\" --fix",
     "test": "hardhat test"
   },
-  "author": "pillardev@protonmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.pwlnh.com/deprotocol/poc-strategy.git"
+  },
+  "keywords": [
+    "poc-strategy"
+  ],
+  "author": "3commas",
   "license": "MIT",
   "devDependencies": {
     "@nomiclabs/buidler": "^1.4.8",
@@ -28,7 +35,7 @@
     "@nomiclabs/hardhat-truffle5": "^2.0.2",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@nomiclabs/hardhat-web3": "^2.0.0",
-    "@openzeppelin/contracts": "^4.4.0",
+    "@openzeppelin/contracts": "4.3.3",
     "@openzeppelin/contracts-ethereum-package": "3.0.0",
     "@openzeppelin/hardhat-upgrades": "^1.12.0",
     "@openzeppelin/test-helpers": "^0.5.15",
