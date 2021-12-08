@@ -14,13 +14,15 @@ contract CyberWayNFT is ERC721, Governance {
 
     CyberWayToken[] public nftTokens;
 
-    constructor(string memory name_, string memory symbol_) ERC721(name_, symbol_) {}
+    constructor(string memory name_, string memory symbol_) ERC721(name_, symbol_) {
+        // todo tokenURI!!!
+    }
 
 
     function mint(address to,
                     uint8 kind_,
                     uint8 newColorFrame_,
-                    uint8 rand_) external onlyGovernance returns(uint256){
+                    uint8 rand_) external onlyGovernance returns(uint256) {
         CyberWayToken memory cyberToken = CyberWayToken({kind: kind_, colorFrame: newColorFrame_, rand: rand_});
         nftTokens.push(cyberToken);
         uint256 tokenId =  nftTokens.length - 1;
