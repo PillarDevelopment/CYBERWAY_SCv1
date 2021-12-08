@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Token is ERC20, Ownable {
+contract TokenMock is ERC20, Ownable {
     using Address for address;
 
     constructor(string memory _name,

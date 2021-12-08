@@ -2,12 +2,21 @@
   "name": "cyber_way_nft",
   "version": "0.1.0",
   "description": "cyber_way_nft",
+  "main": "hardhat.config.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
+    "clean": "rimraf artifacts cache coverage coverage.json",
+    "coverage": "hardhat coverage",
     "deploy": "hardhat deploy --network",
     "deploy:test": "hardhat deploy",
+    "lint": "yarn run lint:js && yarn run lint:sol",
+    "lint:fix": "yarn run lint:js:fix && yarn run lint:sol:fix",
+    "lint:js": "eslint .",
+    "lint:js:fix": "eslint . --fix",
+    "lint:sol": "solhint --max-warnings 0 \"contracts/**/*.sol\"",
+    "lint:sol:fix": "solhint --max-warnings 0 \"contracts/**/*.sol\" --fix",
     "test": "hardhat test"
   },
   "author": "pillardev@protonmail.com",
