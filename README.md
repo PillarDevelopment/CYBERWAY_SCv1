@@ -13,3 +13,7 @@ npx hardhat node
 node scripts/sample-script.js
 npx hardhat help
 ```
+
+```
+together slice surprise hip ten bread cinnamon carry giggle shine tone seven surface language tribe film purpose fine forward jump learn unlock outdoor kitchen
+```
