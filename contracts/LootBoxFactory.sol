@@ -38,6 +38,7 @@ contract LootBoxFactory is Ownable, Random {
         revert("LootBoxFactory: use buyBox");
     }
 
+
     function setPrices(uint256 boxOnePrice,
                         uint256 boxTwoPrice,
                         uint256 boxThreePrice,

@@ -28,7 +28,7 @@ contract Farming is Ownable{
 
     function depositFarmingToken(uint256 id) public {
         require(userInfo[msg.sender][id] == 0, "Farming: is exist");
-        cyberNft.safeTransferFrom(msg.sender, address(this), id);
+        cyberNft.transferFrom(msg.sender, address(this), id);
         userInfo[msg.sender][id] = block.number;
         emit NFTDeposited(msg.sender, id, userInfo[msg.sender][id]);
     }
@@ -42,7 +42,7 @@ contract Farming is Ownable{
         userInfo[msg.sender][id] = 0;
 
         cyberToken.transferFrom(address(this), msg.sender, amount);
-        cyberNft.safeTransferFrom(address(this), msg.sender, id);
+        cyberNft.transferFrom(address(this), msg.sender, id);
         emit NFTWithdrawn(msg.sender, id, amount);
     }
 
@@ -60,7 +60,7 @@ contract Farming is Ownable{
     function emergencyWithdrawFarmingToken(uint256 id) public {
         require(userInfo[msg.sender][id] != 0, "Farming: Sender isn't token's owner");
         userInfo[msg.sender][id] = 0;
-        cyberNft.safeTransferFrom(address(this), msg.sender, id);
+        cyberNft.transferFrom(address(this), msg.sender, id);
         emit NFTEmergencyWithdrawn(msg.sender, id, block.number);
     }
 
