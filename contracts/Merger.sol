@@ -17,13 +17,13 @@ contract Merger is Ownable {
     function merge(uint256[3] memory _donors) public {
         require(nft.getTokenRand(_donors[0]) == nft.getTokenRand(_donors[1]) &&
                                 nft.getTokenRand(_donors[2]) == nft.getTokenRand(_donors[0])
-                                && nft.getTokenRand(_donors[0]) < 4, "Splitter: rand not equal or max");
+                                && nft.getTokenRand(_donors[0]) < 4,"Merger: rand not equal or max");
 
         require(nft.getTokenKind(_donors[0]) == nft.getTokenKind(_donors[1]) &&
-                                nft.getTokenKind(_donors[2]) == nft.getTokenKind(_donors[0]), "Splitter: kind not equal");
+                                nft.getTokenKind(_donors[2]) == nft.getTokenKind(_donors[0]),"Merger:kind notEqual");
 
         require(nft.getTokenColor(_donors[0]) == nft.getTokenColor(_donors[1]) &&
-                                nft.getTokenColor(_donors[2]) == nft.getTokenColor(_donors[0]), "Splitter: color not equal");
+                                nft.getTokenColor(_donors[2]) == nft.getTokenColor(_donors[0]),"Merger:color notEqual");
 
         for(uint i = 0; i < _donors.length; i++) {
             nft.safeTransferFrom(msg.sender, address(this), _donors[i]);

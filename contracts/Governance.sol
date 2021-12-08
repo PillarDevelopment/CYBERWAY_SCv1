@@ -5,22 +5,26 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Governance is Ownable{
 
+    mapping(address => bool) private _governance;
+
+
     modifier onlyGovernance() {
-        require(governance[_msgSender()], "CYBER_NFT: caller is not the governance");
+        require(_governance[_msgSender()], "CYBER_NFT: caller is not the governance");
         _;
     }
 
-    mapping(address => bool) public governance;
 
-    function isGovernance(address governance_) public view returns(bool) {
-        return governance[governance_];
+    function addGovernance(address member) public onlyOwner {
+        _governance[member] = true;
     }
 
-    function addGovernance(address _member) public onlyOwner {
-        governance[_member] = true;
+
+    function removeGovernance(address member) public onlyOwner {
+        _governance[member] = false;
     }
 
-    function removeGovernance(address _member) public onlyOwner {
-        governance[_member] = false;
+
+    function isGovernance(address member) public view returns(bool) {
+        return _governance[member];
     }
 }
