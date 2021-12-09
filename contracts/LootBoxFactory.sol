@@ -38,25 +38,11 @@ contract LootBoxFactory is Ownable, Random {
         revert("LootBoxFactory: use buyBox");
     }
 
-
-    function setPrices(uint256 boxOnePrice,
-                        uint256 boxTwoPrice,
-                        uint256 boxThreePrice,
-                        uint256 boxFourPrice) public onlyOwner {
-        require(boxOnePrice > 0 && boxTwoPrice > 0 &&
-                boxThreePrice > 0 && boxFourPrice > 0, "LootBoxFactory: incorrect price");
-
-        boxes[0].price = boxOnePrice;
-        boxes[1].price = boxTwoPrice;
-        boxes[2].price = boxThreePrice;
-        boxes[3].price = boxFourPrice;
-    }
-
-
+    // 0, 1, 2, 3
     function buyBox(uint256 _boxId) public payable {
-        require(_boxId < boxes.length, "LootBoxFactory: This box isn't exist");
-        require(boxes[_boxId].price == msg.value, "LootBoxFactory: incorrect value");
-        require(boxes[_boxId].currentCount + 1 < boxes[_boxId].maxCount, "LootBoxFactory: box limit is exhausted");
+        require(_boxId < boxes.length, "LootBox: This box isn't exist");
+        require(boxes[_boxId].price == msg.value, "LootBox: wrong purchase amount");
+        require(boxes[_boxId].currentCount < boxes[_boxId].maxCount, "LootBox: box limit is exhausted");
 
         (uint8 tokenKind, uint8 tokenColor, uint8 tokenRand) = _rand(_boxId); // got token parameters
 
@@ -68,8 +54,21 @@ contract LootBoxFactory is Ownable, Random {
     }
 
 
+    function setPrices(uint256 boxOnePrice,
+                        uint256 boxTwoPrice,
+                        uint256 boxThreePrice,
+                        uint256 boxFourPrice) public onlyOwner {
+        require(boxOnePrice > 0 && boxTwoPrice > 0 && boxThreePrice > 0 && boxFourPrice > 0,"LootBox: incorrect price");
+
+        boxes[0].price = boxOnePrice;
+        boxes[1].price = boxTwoPrice;
+        boxes[2].price = boxThreePrice;
+        boxes[3].price = boxFourPrice;
+    }
+
+
     function updateSellerAddress(address payable newSeller_) public onlyOwner {
-        require(newSeller_ != address(0x0), "LootBoxFactory: zero address");
+        require(newSeller_ != address(0x0), "LootBox: zero address");
         seller = newSeller_;
         emit NewSeller(newSeller_);
     }
@@ -96,9 +95,6 @@ contract LootBoxFactory is Ownable, Random {
     }
 
 
-    /*
-    Getting token parameters
-    */
     function _rand(uint256 _boxId) private returns(uint8 kind, uint8 color, uint8 rand) {
         uint8[2] memory result_ = _generateRarities(boxes[_boxId].rand);
         kind = result_[0];

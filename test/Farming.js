@@ -1,4 +1,4 @@
-const { ether, expectRevert } = require('@openzeppelin/test-helpers');
+const { ether, BN } = require('@openzeppelin/test-helpers');
 const { expect } = require('chai');
 const {address} = require("hardhat/internal/core/config/config-validation");
 
@@ -18,12 +18,12 @@ contract('Farming', function ([wallet1, wallet2, wallet3]) {
     beforeEach(async function () {
         await this.nftToken.addGovernance(wallet1, { from: wallet1 });
         await this.nftToken.mint(wallet1, 1, 2, 3, { from: wallet1 }); // 0
-        await this.nftToken.mint(wallet1, 2, 3, 4, { from: wallet1 }); // 1
-        await this.nftToken.mint(wallet2, 3, 2, 1, { from: wallet1 }); // 2
-        await this.nftToken.mint(wallet2, 2, 1, 2, { from: wallet1 }); // 3
+        await this.nftToken.mint(wallet1, 1, 3, 4, { from: wallet1 }); // 1
+        await this.nftToken.mint(wallet2, 0, 2, 1, { from: wallet1 }); // 2
+        await this.nftToken.mint(wallet2, 1, 1, 2, { from: wallet1 }); // 3
     });
 
-    describe('depositFarmingToken', async function () {
+    describe('Deposit NFT Farming Token', async function () {
 
         it('non approve', async function () {
             try {
@@ -45,7 +45,6 @@ contract('Farming', function ([wallet1, wallet2, wallet3]) {
             }
             await this.nftToken.approve(this.farming.address, 2, { from: wallet2 });
             await this.farming.depositFarmingToken(2, {from: wallet2});
-
         });
 
         it('deposit already exist', async function () {
@@ -63,133 +62,97 @@ contract('Farming', function ([wallet1, wallet2, wallet3]) {
         });
 
     });
-/*
 
-    describe('Mint and burn new tokens', async function () {
-
-        it('should add to other contract to governance', async function () {
-            await this.dcToken.addGovernance(wallet2, { from: wallet1 });
-            await this.dcToken.mint(wallet2, ether('10000'), { from: wallet2 });
-
+    describe('Set basic params', async  function() {
+        it('not owner', async function () {
+            await this.farming.setBasicLockPeriod(100, {from: wallet1});
             try {
-                await this.dcToken.removeGovernance(wallet1, { from: wallet2 });
+                await this.farming.setBasicLockPeriod(10, {from: wallet2});
                 expect(true).equal(true);
             } catch (error) {
-                expect(error.toString().indexOf('Wallet2 is not owner') !== -1).equal(false);
+                expect(error.toString().indexOf('not owner') !== -1).equal(false);
             }
+            await this.farming.setTokenPerBlock(100, {from: wallet1});
+            const currentBlock = await this.farming.getCurrentBlockReward();
+            expect(currentBlock.toString()).to.equal('100');
 
             try {
-                await this.dcToken.addGovernance(wallet3, { from: wallet2 });
+                await this.farming.setTokenPerBlock(20, {from: wallet2});
                 expect(true).equal(true);
             } catch (error) {
-                expect(error.toString().indexOf('Wallet2 is not owner') !== -1).equal(false);
+                expect(error.toString().indexOf('not owner') !== -1).equal(false);
             }
-
-            await this.dcToken.removeGovernance(wallet1, { from: wallet1 });
         });
 
+       it('zero amount', async function() {
+           try {
+               await this.farming.setBasicLockPeriod(10, {from: wallet2});
+               expect(true).equal(true);
+           } catch (error) {
+               expect(error.toString().indexOf('Farming: zero amount') !== -1).equal(false);
+           }
+           await this.farming.setBasicLockPeriod(100, {from: wallet1});
+
+           try {
+               await this.farming.setTokenPerBlock(0, {from: wallet1});
+               expect(true).equal(true);
+           } catch (error) {
+               expect(error.toString().indexOf('zero amount') !== -1).equal(false);
+           }
+           await this.farming.setTokenPerBlock(2, {from: wallet1});
+           const currentBlock = await this.farming.getCurrentBlockReward();
+           expect(currentBlock.toString()).to.equal('2');
+       });
     });
 
-    describe('Pause and unpause operations', async function () {
-
-
-        it('should be Pause/unpause for owner', async function () {
-            await this.dcToken.pause({ from: wallet1 });
-
-            try {
-                await this.dcToken.pause({ from: wallet1 });
-                expect(true).equal(true);
-            } catch (error) {
-                expect(error.toString().indexOf('Wallet2 is not owner') !== -1).equal(false);
-            }
+    describe('Emergency withdraw NFT', async  function() {
+        it('not owner', async function () {
+            await this.nftToken.approve(this.farming.address, 3, { from: wallet2 });
+            await this.farming.depositFarmingToken(3, {from: wallet2});
 
             try {
-                await this.dcToken.unpause({ from: wallet2 });
+                await this.farming.emergencyWithdrawFarmingToken(3, {from: wallet1});
                 expect(true).equal(true);
             } catch (error) {
-                expect(error.toString().indexOf('Wallet2 is not owner') !== -1).equal(false);
+                expect(error.toString().indexOf('Wallet1 is not owner') !== -1).equal(false);
             }
-
-            await this.dcToken.unpause({ from: wallet1 });
         });
 
-
-        it('should transfer after pause', async function () {
-            await this.dcToken.mint(wallet2, ether('10000'), { from: wallet1 });
-            await this.dcToken.mint(wallet3, ether('10000'), { from: wallet1 });
-            await this.dcToken.pause({ from: wallet1 });
-            await this.dcToken.transfer(wallet3, ether('1000'), { from: wallet2 });
+        it('not deposit', async function() {
+            await this.nftToken.mint(wallet2, 0, 1, 2, { from: wallet1 }); // 4
+            await this.nftToken.approve(this.farming.address, 4, { from: wallet1 });
 
             try {
-                await this.dcToken.mint(wallet2, ether('10000'), { from: wallet1 });
-                 expect(true).equal(true);
-            } catch (error) {
-                expect(error.toString().indexOf('Wallet2 is not owner') !== -1).equal(false);
-            }
-
-            try {
-                await this.dcToken.transfer(wallet3, ether('1000'), { from: wallet2 });
+                await this.farming.emergencyWithdrawFarmingToken(3, {from: wallet1});
                 expect(true).equal(true);
             } catch (error) {
-                expect(error.toString().indexOf('Wallet2 is not owner') !== -1).equal(false);
+                expect(error.toString().indexOf('not deposit') !== -1).equal(false);
             }
-
-            await this.dcToken.unpause({ from: wallet1 });
-            await this.dcToken.transfer(wallet3, ether('1000'), { from: wallet2 });
         });
-
     });
 
-    describe('Add and remove new governance contracts', async function () {
-
-        it('should mint after remove out governance', async function () {
-            await this.dcToken.addGovernance(wallet2, { from: wallet1 });
-            await this.dcToken.mint(wallet2, ether('10000'), { from: wallet2 });
-            await this.dcToken.removeGovernance(wallet1, { from: wallet1 });
-
+    describe('Withdraw NFT Farming Token', async  function() {
+        it('period', async function() {
+            await this.nftToken.mint(wallet2, 0, 0, 0, { from: wallet1 }); // 4
+            await this.nftToken.approve(this.farming.address, 5, { from: wallet1 });
+            await this.farming.depositFarmingToken(5, { from: wallet1 });
             try {
-                await this.dcToken.mint(wallet2, ether('10000'), { from: wallet2 });
+                await this.farming.withdrawFarmingToken(5, {from: wallet1});
                 expect(true).equal(true);
             } catch (error) {
-                expect(error.toString().indexOf('Wallet2 is not owner') !== -1).equal(false);
+                expect(error.toString().indexOf('incorrect time') !== -1).equal(false);
             }
 
+            await this.farming.setBasicLockPeriod(1, {from: wallet1});
+
             try {
-                await this.dcToken.mint(wallet2, ether('10000'), { from: wallet3 });
+                await this.farming.withdrawFarmingToken(5, {from: wallet3});
                 expect(true).equal(true);
             } catch (error) {
-                expect(error.toString().indexOf('Wallet2 is not owner') !== -1).equal(false);
+                expect(error.toString().indexOf('not owner') !== -1).equal(false);
             }
+            await this.farming.withdrawFarmingToken(5, {from: wallet1});
         });
-
-        it('should burn after remove out governance', async function () {
-            await this.dcToken.addGovernance(wallet2, { from: wallet1 });
-            await this.dcToken.mint(wallet2, ether('10000'), { from: wallet2 });
-            await this.dcToken.mint(wallet3, ether('10000'), { from: wallet2 });
-
-            await this.dcToken.burn(ether('1000'), { from: wallet2 });
-            await this.dcToken.removeGovernance(wallet1, { from: wallet1 });
-
-            try {
-                await this.dcToken.burn(ether('1000'), { from: wallet2 });
-                expect(true).equal(true);
-            } catch (error) {
-                expect(error.toString().indexOf('Wallet2 is not owner') !== -1).equal(false);
-            }
-
-            try {
-                await this.dcToken.burn(ether('100'), { from: wallet3 });
-                expect(true).equal(true);
-            } catch (error) {
-                expect(error.toString().indexOf('Wallet2 is not owner') !== -1).equal(false);
-            }
-
-
-            //
-
-        });
-
     });
 
-*/
 });

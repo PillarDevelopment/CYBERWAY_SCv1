@@ -1,5 +1,5 @@
 module.exports = {
     skipFiles: [
-        'mocks'
+        'mocks', 'utils'
     ]
 }

@@ -12,7 +12,7 @@ contract CyberWayNFT is ERC721, Governance {
         uint8 rand; // 5 Common,Uncommon,Rare,Epic,Legendary
     }
 
-    CyberWayToken[] public nftTokens;
+    CyberWayToken[] private _nftTokens;
 
     constructor(string memory name_, string memory symbol_) ERC721(name_, symbol_) {
         // todo tokenURI!!!
@@ -23,9 +23,13 @@ contract CyberWayNFT is ERC721, Governance {
                     uint8 kind_,
                     uint8 newColorFrame_,
                     uint8 rand_) external onlyGovernance returns(uint256) {
+        // require(kind_ < 2, "CyberWayToken: incorrect kind_");
+        // require(newColorFrame_ < 5, "CyberWayToken: incorrect newColorFrame_");
+        // require(rand_ < 5, "CyberWayToken: incorrect rand_");
+
         CyberWayToken memory cyberToken = CyberWayToken({kind: kind_, colorFrame: newColorFrame_, rand: rand_});
-        nftTokens.push(cyberToken);
-        uint256 tokenId =  nftTokens.length - 1;
+        _nftTokens.push(cyberToken);
+        uint256 tokenId =  _nftTokens.length - 1;
         _mint(to, tokenId);
         return tokenId;
     }
@@ -33,21 +37,21 @@ contract CyberWayNFT is ERC721, Governance {
 
     function burn(uint256 tokenId) external onlyGovernance {
         _burn(tokenId);
-        delete nftTokens[tokenId];
+        delete _nftTokens[tokenId];
     }
 
 
     function getTokenKind(uint256 tokenId) public view returns(uint8) {
-        return nftTokens[tokenId].kind;
+        return _nftTokens[tokenId].kind;
     }
 
 
     function getTokenColor(uint256 tokenId) public view returns(uint8) {
-        return nftTokens[tokenId].colorFrame;
+        return _nftTokens[tokenId].colorFrame;
     }
 
 
     function getTokenRand(uint256 tokenId) public view returns(uint8) {
-        return nftTokens[tokenId].rand;
+        return _nftTokens[tokenId].rand;
     }
 }

@@ -25,7 +25,6 @@ contract Merger is Ownable {
 
         require(nft.getTokenColor(_donors[0]) == nft.getTokenColor(_donors[1]) &&
             nft.getTokenColor(_donors[2]) == nft.getTokenColor(_donors[0]),"Merger:color notEqual");
-
         uint8 newKind = nft.getTokenKind(_donors[0]);
         uint8 newColor = nft.getTokenColor(_donors[0]);
         uint8 newRand = nft.getTokenRand(_donors[0]) + 1;

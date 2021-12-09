@@ -1,6 +1,6 @@
 
 /** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/mock/TokenMock.sol
+ *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/mocks/TokenMock.sol
 */
             
 ////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
@@ -31,7 +31,7 @@ abstract contract Context {
 
 
 /** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/mock/TokenMock.sol
+ *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/mocks/TokenMock.sol
 */
             
 ////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
@@ -120,7 +120,7 @@ interface IERC20 {
 
 
 /** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/mock/TokenMock.sol
+ *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/mocks/TokenMock.sol
 */
             
 ////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
@@ -155,7 +155,7 @@ interface IERC20Metadata is IERC20 {
 
 
 /** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/mock/TokenMock.sol
+ *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/mocks/TokenMock.sol
 */
             
 ////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
@@ -234,7 +234,7 @@ abstract contract Ownable is Context {
 
 
 /** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/mock/TokenMock.sol
+ *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/mocks/TokenMock.sol
 */
             
 ////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
@@ -458,7 +458,7 @@ library Address {
 
 
 /** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/mock/TokenMock.sol
+ *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/mocks/TokenMock.sol
 */
             
 ////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
@@ -819,7 +819,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
 
 
 /** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/mock/TokenMock.sol
+ *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/mocks/TokenMock.sol
 */
 
 // "SPDX-License-Identifier: MIT"
