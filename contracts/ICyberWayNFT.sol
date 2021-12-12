@@ -9,8 +9,6 @@ interface ICyberWayNFT {
 
     function burn(uint256 tokenId) external;
 
-    function setApprovalForAll(address operator, bool approved) external;
-
     function getTokenKind(uint256 tokenId) external view returns(uint8);
 
     function getTokenColor(uint256 tokenId) external view returns(uint8);
