@@ -1,9 +1,4 @@
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/LootBoxFactory.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
+// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
 
 pragma solidity ^0.8.0;
 
@@ -27,16 +22,6 @@ abstract contract Context {
     }
 }
 
-
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/LootBoxFactory.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-pragma solidity ^0.8.0;
-
 contract Random {
 
     uint256 private _randNonce = 0;
@@ -47,14 +32,6 @@ contract Random {
 }
 
 
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/LootBoxFactory.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-pragma solidity ^0.8.0;
-
 interface ICyberWayNFT {
 
     function transferFrom(address from, address to, uint256 tokenId) external;
@@ -63,8 +40,6 @@ interface ICyberWayNFT {
 
     function burn(uint256 tokenId) external;
 
-    function setApprovalForAll(address operator, bool approved) external;
-
     function getTokenKind(uint256 tokenId) external view returns(uint8);
 
     function getTokenColor(uint256 tokenId) external view returns(uint8);
@@ -72,16 +47,6 @@ interface ICyberWayNFT {
     function getTokenRand(uint256 tokenId) external view returns(uint8);
 }
 
-
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/LootBoxFactory.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-
-pragma solidity ^0.8.0;
 
 /**
  * @dev Collection of functions related to the address type
@@ -296,19 +261,6 @@ library Address {
     }
 }
 
-
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/LootBoxFactory.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-
-pragma solidity ^0.8.0;
-
-////import "../utils/Context.sol";
-
 /**
  * @dev Contract module which provides a basic access control mechanism, where
  * there is an account (an owner) that can be granted exclusive access to
@@ -375,20 +327,6 @@ abstract contract Ownable is Context {
     }
 }
 
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/LootBoxFactory.sol
-*/
-
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-pragma solidity ^0.8.0;
-
-////import "@openzeppelin/contracts/access/Ownable.sol";
-////import "@openzeppelin/contracts/utils/Address.sol";
-
-////import "./ICyberWayNFT.sol";
-////import "./utils/Random.sol";
-
 contract LootBoxFactory is Ownable, Random {
 
     struct LootBox {
@@ -409,10 +347,10 @@ contract LootBoxFactory is Ownable, Random {
     constructor(address _nft) {
         nft = ICyberWayNFT(_nft);
         seller = payable(msg.sender);
-        _addBox([330, 33, 2, 570, 60, 5], 64000000000000000, 20000);
-        _addBox([270, 90, 6, 470, 150, 14], 160000000000000000, 5000);
-        _addBox([270, 180, 40, 270, 200, 40], 430000000000000000, 1000);
-        _addBox([0, 250, 350, 0, 0, 400], 1050000000000000000, 400);
+        _addBox([330, 363, 365, 935,995, 1000], 64000000000000000, 20000);
+        _addBox([270, 360, 366, 836, 986, 1000], 160000000000000000, 5000);
+        _addBox([270, 450, 490, 760, 960, 1000], 430000000000000000, 1000);
+        _addBox([0, 250, 600, 600, 600, 1000], 1050000000000000000, 400);
     }
 
 
@@ -420,25 +358,11 @@ contract LootBoxFactory is Ownable, Random {
         revert("LootBoxFactory: use buyBox");
     }
 
-
-    function setPrices(uint256 boxOnePrice,
-                        uint256 boxTwoPrice,
-                        uint256 boxThreePrice,
-                        uint256 boxFourPrice) public onlyOwner {
-        require(boxOnePrice > 0 && boxTwoPrice > 0 &&
-                boxThreePrice > 0 && boxFourPrice > 0, "LootBoxFactory: incorrect price");
-
-        boxes[0].price = boxOnePrice;
-        boxes[1].price = boxTwoPrice;
-        boxes[2].price = boxThreePrice;
-        boxes[3].price = boxFourPrice;
-    }
-
-
+    // 0, 1, 2, 3
     function buyBox(uint256 _boxId) public payable {
-        require(_boxId < boxes.length, "LootBoxFactory: This box isn't exist");
-        require(boxes[_boxId].price == msg.value, "LootBoxFactory: incorrect value");
-        require(boxes[_boxId].currentCount + 1 < boxes[_boxId].maxCount, "LootBoxFactory: box limit is exhausted");
+        require(_boxId < boxes.length, "LootBox: This box isn't exist");
+        require(boxes[_boxId].price == msg.value, "LootBox: wrong purchase amount");
+        require(boxes[_boxId].currentCount < boxes[_boxId].maxCount, "LootBox: box limit is exhausted");
 
         (uint8 tokenKind, uint8 tokenColor, uint8 tokenRand) = _rand(_boxId); // got token parameters
 
@@ -450,8 +374,21 @@ contract LootBoxFactory is Ownable, Random {
     }
 
 
+    function setPrices(uint256 boxOnePrice,
+                        uint256 boxTwoPrice,
+                        uint256 boxThreePrice,
+                        uint256 boxFourPrice) public onlyOwner {
+        require(boxOnePrice > 0 && boxTwoPrice > 0 && boxThreePrice > 0 && boxFourPrice > 0,"LootBox: incorrect price");
+
+        boxes[0].price = boxOnePrice;
+        boxes[1].price = boxTwoPrice;
+        boxes[2].price = boxThreePrice;
+        boxes[3].price = boxFourPrice;
+    }
+
+
     function updateSellerAddress(address payable newSeller_) public onlyOwner {
-        require(newSeller_ != address(0x0), "LootBoxFactory: zero address");
+        require(newSeller_ != address(0x0), "LootBox: zero address");
         seller = newSeller_;
         emit NewSeller(newSeller_);
     }
@@ -478,9 +415,6 @@ contract LootBoxFactory is Ownable, Random {
     }
 
 
-    /*
-    Getting token parameters
-    */
     function _rand(uint256 _boxId) private returns(uint8 kind, uint8 color, uint8 rand) {
         uint8[2] memory result_ = _generateRarities(boxes[_boxId].rand);
         kind = result_[0];

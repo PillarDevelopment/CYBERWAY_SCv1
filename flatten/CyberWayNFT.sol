@@ -1,9 +1,4 @@
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/CyberWayNFT.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
+// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
 
 pragma solidity ^0.8.0;
 
@@ -27,18 +22,6 @@ abstract contract Context {
     }
 }
 
-
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/CyberWayNFT.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-
-pragma solidity ^0.8.0;
-
-////import "../utils/Context.sol";
 
 /**
  * @dev Contract module which provides a basic access control mechanism, where
@@ -107,16 +90,6 @@ abstract contract Ownable is Context {
 }
 
 
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/CyberWayNFT.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-
-pragma solidity ^0.8.0;
-
 /**
  * @dev Interface of the ERC165 standard, as defined in the
  * https://eips.ethereum.org/EIPS/eip-165[EIP].
@@ -138,18 +111,6 @@ interface IERC165 {
     function supportsInterface(bytes4 interfaceId) external view returns (bool);
 }
 
-
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/CyberWayNFT.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-
-pragma solidity ^0.8.0;
-
-////import "../../utils/introspection/IERC165.sol";
 
 /**
  * @dev Required interface of an ERC721 compliant contract.
@@ -289,18 +250,6 @@ interface IERC721 is IERC165 {
 }
 
 
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/CyberWayNFT.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-
-pragma solidity ^0.8.0;
-
-////import "./IERC165.sol";
-
 /**
  * @dev Implementation of the {IERC165} interface.
  *
@@ -324,16 +273,6 @@ abstract contract ERC165 is IERC165 {
     }
 }
 
-
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/CyberWayNFT.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-
-pragma solidity ^0.8.0;
 
 /**
  * @dev String operations.
@@ -397,17 +336,6 @@ library Strings {
         return string(buffer);
     }
 }
-
-
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/CyberWayNFT.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-
-pragma solidity ^0.8.0;
 
 /**
  * @dev Collection of functions related to the address type
@@ -623,18 +551,6 @@ library Address {
 }
 
 
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/CyberWayNFT.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-
-pragma solidity ^0.8.0;
-
-////import "../IERC721.sol";
-
 /**
  * @title ERC-721 Non-Fungible Token Standard, optional metadata extension
  * @dev See https://eips.ethereum.org/EIPS/eip-721
@@ -655,17 +571,6 @@ interface IERC721Metadata is IERC721 {
      */
     function tokenURI(uint256 tokenId) external view returns (string memory);
 }
-
-
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/CyberWayNFT.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-
-pragma solidity ^0.8.0;
 
 /**
  * @title ERC721 token receiver interface
@@ -689,18 +594,6 @@ interface IERC721Receiver {
         bytes calldata data
     ) external returns (bytes4);
 }
-
-
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/CyberWayNFT.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-pragma solidity ^0.8.0;
-
-////import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Governance is Ownable{
 
@@ -728,24 +621,6 @@ contract Governance is Ownable{
     }
 }
 
-
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/CyberWayNFT.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-
-pragma solidity ^0.8.0;
-
-////import "./IERC721.sol";
-////import "./IERC721Receiver.sol";
-////import "./extensions/IERC721Metadata.sol";
-////import "../../utils/Address.sol";
-////import "../../utils/Context.sol";
-////import "../../utils/Strings.sol";
-////import "../../utils/introspection/ERC165.sol";
 
 /**
  * @dev Implementation of https://eips.ethereum.org/EIPS/eip-721[ERC721] Non-Fungible Token Standard, including
@@ -1148,16 +1023,6 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
 }
 
 
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/CyberWayNFT.sol
-*/
-
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-pragma solidity ^0.8.0;
-
-////import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-////import "./Governance.sol";
-
 contract CyberWayNFT is ERC721, Governance {
 
     struct CyberWayToken {
@@ -1166,7 +1031,7 @@ contract CyberWayNFT is ERC721, Governance {
         uint8 rand; // 5 Common,Uncommon,Rare,Epic,Legendary
     }
 
-    CyberWayToken[] public nftTokens;
+    CyberWayToken[] private _nftTokens;
 
     constructor(string memory name_, string memory symbol_) ERC721(name_, symbol_) {
         // todo tokenURI!!!
@@ -1177,9 +1042,13 @@ contract CyberWayNFT is ERC721, Governance {
                     uint8 kind_,
                     uint8 newColorFrame_,
                     uint8 rand_) external onlyGovernance returns(uint256) {
+        // require(kind_ < 2, "CyberWayToken: incorrect kind_");
+        // require(newColorFrame_ < 5, "CyberWayToken: incorrect newColorFrame_");
+        // require(rand_ < 5, "CyberWayToken: incorrect rand_");
+
         CyberWayToken memory cyberToken = CyberWayToken({kind: kind_, colorFrame: newColorFrame_, rand: rand_});
-        nftTokens.push(cyberToken);
-        uint256 tokenId =  nftTokens.length - 1;
+        _nftTokens.push(cyberToken);
+        uint256 tokenId =  _nftTokens.length - 1;
         _mint(to, tokenId);
         return tokenId;
     }
@@ -1187,22 +1056,21 @@ contract CyberWayNFT is ERC721, Governance {
 
     function burn(uint256 tokenId) external onlyGovernance {
         _burn(tokenId);
-        delete nftTokens[tokenId];
+        delete _nftTokens[tokenId];
     }
 
 
     function getTokenKind(uint256 tokenId) public view returns(uint8) {
-        return nftTokens[tokenId].kind;
+        return _nftTokens[tokenId].kind;
     }
 
 
     function getTokenColor(uint256 tokenId) public view returns(uint8) {
-        return nftTokens[tokenId].colorFrame;
+        return _nftTokens[tokenId].colorFrame;
     }
 
 
     function getTokenRand(uint256 tokenId) public view returns(uint8) {
-        return nftTokens[tokenId].rand;
+        return _nftTokens[tokenId].rand;
     }
 }
-

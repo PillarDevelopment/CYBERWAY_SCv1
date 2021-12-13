@@ -1,9 +1,4 @@
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/Farming.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
+// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
 
 pragma solidity ^0.8.0;
 
@@ -27,16 +22,6 @@ abstract contract Context {
     }
 }
 
-
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/Farming.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-
-pragma solidity ^0.8.0;
 
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP.
@@ -116,19 +101,6 @@ interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/Farming.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-
-pragma solidity ^0.8.0;
-
-////import "../utils/Context.sol";
-
 /**
  * @dev Contract module which provides a basic access control mechanism, where
  * there is an account (an owner) that can be granted exclusive access to
@@ -196,15 +168,6 @@ abstract contract Ownable is Context {
 }
 
 
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/Farming.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-pragma solidity ^0.8.0;
-
 interface ICyberWayNFT {
 
     function transferFrom(address from, address to, uint256 tokenId) external;
@@ -213,27 +176,12 @@ interface ICyberWayNFT {
 
     function burn(uint256 tokenId) external;
 
-    function setApprovalForAll(address operator, bool approved) external;
-
     function getTokenKind(uint256 tokenId) external view returns(uint8);
 
     function getTokenColor(uint256 tokenId) external view returns(uint8);
 
     function getTokenRand(uint256 tokenId) external view returns(uint8);
 }
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/Farming.sol
-*/
-
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-pragma solidity ^0.8.0;
-
-////import "./ICyberWayNFT.sol";
-////import "@openzeppelin/contracts/access/Ownable.sol";
-////import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-
 
 contract Farming is Ownable{
 
@@ -309,4 +257,3 @@ contract Farming is Ownable{
         return _tokenPerBlock;
     }
 }
-

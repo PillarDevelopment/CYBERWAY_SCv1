@@ -1,9 +1,4 @@
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/Merger.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
+// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
 
 pragma solidity ^0.8.0;
 
@@ -26,19 +21,6 @@ abstract contract Context {
         return msg.data;
     }
 }
-
-
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/Merger.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-
-pragma solidity ^0.8.0;
-
-////import "../utils/Context.sol";
 
 /**
  * @dev Contract module which provides a basic access control mechanism, where
@@ -106,16 +88,6 @@ abstract contract Ownable is Context {
     }
 }
 
-
-
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/Merger.sol
-*/
-            
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-pragma solidity ^0.8.0;
-
 interface ICyberWayNFT {
 
     function transferFrom(address from, address to, uint256 tokenId) external;
@@ -124,8 +96,6 @@ interface ICyberWayNFT {
 
     function burn(uint256 tokenId) external;
 
-    function setApprovalForAll(address operator, bool approved) external;
-
     function getTokenKind(uint256 tokenId) external view returns(uint8);
 
     function getTokenColor(uint256 tokenId) external view returns(uint8);
@@ -133,16 +103,6 @@ interface ICyberWayNFT {
     function getTokenRand(uint256 tokenId) external view returns(uint8);
 }
 
-
-/** 
- *  SourceUnit: /Users/ivanborisov/Desktop/3commas_dev/CYBERWAY_SCv1/contracts/Merger.sol
-*/
-
-////// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
-pragma solidity ^0.8.0;
-
-////import "./ICyberWayNFT.sol";
-////import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Merger is Ownable {
 
@@ -165,7 +125,6 @@ contract Merger is Ownable {
 
         require(nft.getTokenColor(_donors[0]) == nft.getTokenColor(_donors[1]) &&
             nft.getTokenColor(_donors[2]) == nft.getTokenColor(_donors[0]),"Merger:color notEqual");
-
         uint8 newKind = nft.getTokenKind(_donors[0]);
         uint8 newColor = nft.getTokenColor(_donors[0]);
         uint8 newRand = nft.getTokenRand(_donors[0]) + 1;
