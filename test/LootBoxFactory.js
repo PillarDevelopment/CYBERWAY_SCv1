@@ -180,11 +180,11 @@ contract('LootBoxFactory', function ([wallet1, wallet2, wallet3]) {
                 expect(error.toString().indexOf('box limit is exhausted') !== -1).equal(true);
             }
 
-        //    for (let i = 0; i < 4995; i++) { // 4995
-        //        await this.lootBox.buyBox(1, { value: ether('0.02')});
-        //        assert(true);
-        //        this.enableTimeouts(false);
-         //   }
+            for (let i = 0; i < 4995; i++) { // 4995
+                await this.lootBox.buyBox(1, { value: ether('0.02')});
+                assert(true);
+                this.enableTimeouts(false);
+            }
             await this.lootBox.buyBox(1, { value: ether('0.02')});
             try {
                 await this.lootBox.buyBox(1, { value: ether('0.02')});

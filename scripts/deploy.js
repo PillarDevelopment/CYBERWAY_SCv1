@@ -2,33 +2,30 @@
 
 const hre = require('hardhat');
 const { getChainId } = hre;
-const { ether } = require('@openzeppelin/test-helpers');
 
 async function main() {
     const [deployer] = await ethers.getSigners();
+
+    const CyberERC20 = process.env.CYBER_TOKEN
 
     console.log("Deploying contracts with the account:", deployer.address);
 
     console.log("Account balance:", (await deployer.getBalance()).toString());
 
     const Token = await ethers.getContractFactory("Token");
-    const token = await Token.deploy();
+    const nftToken = await Token.deploy();
     console.log("Token address:", token.address);
 
     const LootBoxFactiry = await ethers.getContractFactory("Token");
-    const boxFactory = await LootBoxFactiry.deploy(token.address);
+    const boxFactory = await LootBoxFactiry.deploy(nftToken.address);
     console.log("LootBoxFactiry address:", boxFactory.address);
 
-    const TokenMock = await ethers.getContractFactory("Token");
-    const tokenMock = await TokenMock.deploy();
-    console.log("TokenMock address:", tokenMock.address);
-
     const Farming = await ethers.getContractFactory("Token");
-    const farming = await Farming.deploy(token.address, tokenMock.address);
+    const farming = await Farming.deploy(nftToken.address, CyberERC20);
     console.log("Farming address:", farming.address);
 
     const Merger = await ethers.getContractFactory("Token");
-    const merger = await Merger.deploy(token.address);
+    const merger = await Merger.deploy(nftToken.address);
     console.log("Merger address:", merger.address);
 }
 
