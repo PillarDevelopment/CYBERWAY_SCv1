@@ -1034,18 +1034,13 @@ contract CyberWayNFT is ERC721, Governance {
     CyberWayToken[] private _nftTokens;
 
     constructor(string memory name_, string memory symbol_) ERC721(name_, symbol_) {
-        // todo tokenURI!!!
     }
 
 
     function mint(address to,
-                    uint8 kind_,
-                    uint8 newColorFrame_,
-                    uint8 rand_) external onlyGovernance returns(uint256) {
-        // require(kind_ < 2, "CyberWayToken: incorrect kind_");
-        // require(newColorFrame_ < 5, "CyberWayToken: incorrect newColorFrame_");
-        // require(rand_ < 5, "CyberWayToken: incorrect rand_");
-
+        uint8 kind_,
+        uint8 newColorFrame_,
+        uint8 rand_) external onlyGovernance returns(uint256) {
         CyberWayToken memory cyberToken = CyberWayToken({kind: kind_, colorFrame: newColorFrame_, rand: rand_});
         _nftTokens.push(cyberToken);
         uint256 tokenId =  _nftTokens.length - 1;
@@ -1072,5 +1067,9 @@ contract CyberWayNFT is ERC721, Governance {
 
     function getTokenRand(uint256 tokenId) public view returns(uint8) {
         return _nftTokens[tokenId].rand;
+    }
+
+    function _baseURI() internal override pure  returns (string memory) {
+        return "https://cybernft.io/"; // todo
     }
 }

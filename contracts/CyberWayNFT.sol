@@ -15,7 +15,6 @@ contract CyberWayNFT is ERC721, Governance {
     CyberWayToken[] private _nftTokens;
 
     constructor(string memory name_, string memory symbol_) ERC721(name_, symbol_) {
-        // todo tokenURI!!!
     }
 
 
@@ -49,5 +48,10 @@ contract CyberWayNFT is ERC721, Governance {
 
     function getTokenRand(uint256 tokenId) public view returns(uint8) {
         return _nftTokens[tokenId].rand;
+    }
+
+    
+    function _baseURI() internal override pure  returns (string memory) {
+        return "https://cybernft.io/"; // todo
     }
 }

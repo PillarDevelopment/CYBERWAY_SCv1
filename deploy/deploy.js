@@ -2,7 +2,7 @@ const hre = require("hardhat");
 const { ethers, upgrades, artifacts} = require("hardhat");
 const NAME = "CYBER_NFT";
 const SYMBOL = "CBRNF";
-const CYBER_TOKEN = "0x361101260B32690D31D710bE64074B9b8f19A8A9";
+const CYBER_TOKEN = "";
 
 async function main() {
     console.log('Running deploy script');
