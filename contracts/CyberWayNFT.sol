@@ -9,7 +9,7 @@ contract CyberWayNFT is ERC721, Governance {
 
     struct CyberWayToken {
         uint8 kind; // 0 - character, 1 - car
-        uint8 person; // number of person
+        uint16 person; // number of person
         uint8 rand; // 5 Common,Uncommon,Rare,Epic,Legendary
     }
 
@@ -21,7 +21,7 @@ contract CyberWayNFT is ERC721, Governance {
 
     function mint(address to,
                     uint8 kind_,
-                    uint8 person_,
+                    uint16 person_,
                     uint8 rand_) external onlyGovernance returns(uint256) {
         CyberWayToken memory cyberToken = CyberWayToken({kind: kind_, person: person_, rand: rand_});
         _nftTokens.push(cyberToken);
@@ -42,7 +42,7 @@ contract CyberWayNFT is ERC721, Governance {
     }
 
 
-    function getTokenPerson(uint256 tokenId) public view returns(uint8) {
+    function getTokenPerson(uint256 tokenId) public view returns(uint16) {
         return _nftTokens[tokenId].person;
     }
 
@@ -60,6 +60,6 @@ contract CyberWayNFT is ERC721, Governance {
 
 
     function _baseURI() internal override pure returns (string memory) {
-        return "https://cybernft.io/nfts?"; // todo
+        return "https://cyberwaynft.com/asset?"; // todo
     }
 }

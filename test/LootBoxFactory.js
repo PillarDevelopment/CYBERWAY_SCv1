@@ -168,7 +168,7 @@ contract('LootBoxFactory', function ([wallet1, wallet2, wallet3]) {
                 this.enableTimeouts(false);
                 console.log("NFT id " + i +" kind: = ", (await this.nftToken.getTokenKind(i)).toString());
                 console.log("NFT id " + i +" rand = :", (await this.nftToken.getTokenRand(i)).toString());
-                console.log("NFT id " + i +" color = ", (await this.nftToken.getTokenColor(i)).toString());
+                console.log("NFT id " + i +" person = ", (await this.nftToken.getTokenPerson(i)).toString());
             }
 
             await this.lootBox.buyBox(1, { value: ether('0.02')});

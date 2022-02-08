@@ -35,14 +35,14 @@ module.exports = {
     },
     bsctestnet: {
       url: "https://data-seed-prebsc-1-s1.binance.org:8545",
-      accounts: [`${TEST_PRIVATE_KEY}`],
+      accounts: [`0xed3411b5925df0dfb882f57a96773f33d76bb18e64a1d29e852e67ce88c50db6`],
       chainId: 97,
       saveDeployments: true,
       gasMultiplier: 2
     },
     bsc: {
       url: 'https://bsc-dataseed.binance.org/',
-      accounts: [`${PROD_PRIVATE_KEY}`],
+      accounts: [`0xed3411b5925df0dfb882f57a96773f33d76bb18e64a1d29e852e67ce88c50db6`],
       chainId: 56,
       live: true,
       saveDeployments: true,
@@ -56,7 +56,7 @@ module.exports = {
     showTimeSpent: true,
   },
   etherscan: {
-    apiKey: ETHERSCAN_API_KEY
+    apiKey: "4G8UD1E6SZPC84YNS85T4G5J6RRFT2RUK6"
   },
 };
 

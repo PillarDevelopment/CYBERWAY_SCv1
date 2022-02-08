@@ -22,7 +22,7 @@ contract('CyberWayNFT', function ([wallet1, wallet2, wallet3]) {
             await this.nftToken.mint(wallet2, 1, 1, 3, { from: wallet2 });
             console.log("NFT id 0 kind:", (await this.nftToken.getTokenKind(0)).toString());
             console.log("NFT id 0 rand:", (await this.nftToken.getTokenRand(0)).toString());
-            console.log("NFT id 0 color:", (await this.nftToken.getTokenColor(0)).toString());
+            console.log("NFT id 0 person:", (await this.nftToken.getTokenPerson(0)).toString());
 
             try {
                 await this.nftToken.removeGovernance(wallet1, { from: wallet2 });

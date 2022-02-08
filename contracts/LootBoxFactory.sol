@@ -48,7 +48,7 @@ contract LootBoxFactory is Ownable, Random {
         require(boxes[_boxId].price == msg.value, "LootBox: wrong purchase amount");
         require(boxes[_boxId].currentCount < boxes[_boxId].maxCount, "LootBox: box limit is exhausted");
 
-        (uint8 tokenKind, uint8 tokenPerson, uint8 tokenRand) = _rand(_boxId); // got token parameters
+        (uint8 tokenKind, uint16 tokenPerson, uint8 tokenRand) = _rand(_boxId); // got token parameters
 
         uint256 tokenId = nft.mint(msg.sender, tokenKind, tokenPerson, tokenRand);
         Address.sendValue(seller, msg.value);
@@ -116,7 +116,7 @@ contract LootBoxFactory is Ownable, Random {
     }
 
 
-    function _rand(uint256 _boxId) private returns(uint8 kind, uint8 person, uint8 rand) {
+    function _rand(uint256 _boxId) private returns(uint8 kind, uint16 person, uint8 rand) {
         uint8[2] memory result_ = _generateRarities(boxes[_boxId].rand);
         kind = result_[0];
         rand = result_[1];
@@ -132,37 +132,37 @@ contract LootBoxFactory is Ownable, Random {
 
     function _generateRarities(uint16[6] memory _chances) private returns(uint8[2] memory) {
         uint8[2] memory result_; // kind / rand
-        uint256 chance = _randMod(1000);
+        uint256 chance = _randMod(1000) + 1;
 
         if (chance <= _chances[0]) {
             result_ = [0,0]; // character Common
         }
-        if (chance <= _chances[1]) {
+        if (chance <= _chances[1] && chance > _chances[0]) {
             result_ = [0,1]; // character Uncommon
         }
-        if (chance <= _chances[2]) {
+        if (chance <= _chances[2] && chance > _chances[1]) {
             result_ = [0,2]; // character Rare
         }
-        if (chance <= _chances[3]) {
+        if (chance <= _chances[3] && chance > _chances[2]) {
             result_ = [1,0]; // car Common
         }
-        if (chance <= _chances[4]) {
+        if (chance <= _chances[4] && chance > _chances[3]) {
             result_ = [1,1]; //  car Uncommon
         }
-        if (chance <= _chances[5]) {
+        if (chance <= _chances[5] && chance > _chances[4]) {
             result_ = [1,2]; // car Rare
         }
         return result_;
     }
 
 
-    function _generateCar() private returns(uint8) {
+    function _generateCar() private returns(uint16) {
         require(cars > 0, "Error cars count eq 0");
-        return _randMod(cars - 1);
+        return _randModSmall(cars);
     }
 
-    function _generateCharacter() private returns(uint8) {
+    function _generateCharacter() private returns(uint16) {
         require(characters > 0, "Error cars count eq 0");
-        return _randMod(characters - 1);
+        return _randModSmall(characters);
     }
 }

@@ -24,7 +24,7 @@ contract Merger is Ownable {
             nft.getTokenKind(_donors[2]) == nft.getTokenKind(_donors[0]),"Merger:kind notEqual");
 
         require(nft.getTokenPerson(_donors[0]) == nft.getTokenPerson(_donors[1]) &&
-            nft.getTokenPerson(_donors[2]) == nft.getTokenPerson(_donors[0]),"Merger:color notEqual");
+            nft.getTokenPerson(_donors[2]) == nft.getTokenPerson(_donors[0]),"Merger:person notEqual");
         uint8 newKind = nft.getTokenKind(_donors[0]);
         uint8 newPerson = nft.getTokenPerson(_donors[0]);
         uint8 newRand = nft.getTokenRand(_donors[0]) + 1;
