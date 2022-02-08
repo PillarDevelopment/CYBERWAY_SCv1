@@ -23,10 +23,6 @@ contract CyberWayNFT is ERC721, Governance {
                     uint8 kind_,
                     uint8 newColorFrame_,
                     uint8 rand_) external onlyGovernance returns(uint256) {
-        // require(kind_ < 2, "CyberWayToken: incorrect kind_");
-        // require(newColorFrame_ < 5, "CyberWayToken: incorrect newColorFrame_");
-        // require(rand_ < 5, "CyberWayToken: incorrect rand_");
-
         CyberWayToken memory cyberToken = CyberWayToken({kind: kind_, colorFrame: newColorFrame_, rand: rand_});
         _nftTokens.push(cyberToken);
         uint256 tokenId =  _nftTokens.length - 1;

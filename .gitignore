@@ -5,6 +5,8 @@ typechain
 .idea
 
 #Hardhat files
+abi
 cache
 artifacts
 process.env
+*.env

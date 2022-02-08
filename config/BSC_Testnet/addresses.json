@@ -1,10 +1,10 @@
 {
   "contracts" : {
-    "CyberWayToken" : "https://testnet.bscscan.com/address/0xfafe9e1a09fd29c4a0feb069dd5cab69b99410b8",
+    "CyberWayToken" : "https://testnet.bscscan.com/address/0x9A91610a5148Ec30c960c23dDFb4BfbDdFa5CD0E",
     "CyberToken" : "https://testnet.bscscan.com/address/0xb0fc5a5bde2f4a7676468e67f84ccb8b7ef167ce",
-    "LootBoxFactory" : "https://testnet.bscscan.com/address/0x56816EE73e2BA5e51820520763048d830513D68a",
-    "Merger" : "https://testnet.bscscan.com/address/0x440e6B7dE6698bcfe3c3a487b022CCB25FE11Ff5",
-    "Farming" : "https://testnet.bscscan.com/address/0x15FF0c72ed073c1973fe8310082211858b199fD7"
+    "LootBoxFactory" : "https://testnet.bscscan.com/address/0x8443512E27a6ef895b55096f565333fe8c59B55C",
+    "Merger" : "https://testnet.bscscan.com/address/0xC58Ff7251036569B286a95C37f9e161B39fB6639",
+    "Farming" : "https://testnet.bscscan.com/address/0x2f1C286BAdB2B1B61da90A9Ddb598958Af40697d"
   },
   "Deployer" : "0x8Cfeb6E98a3ec81bac78C176f4DB989CDAbB1013",
   "Deployer Private Key" : "35fbab6513e2bbe03d5496aaa4f2812abbf6d72ce7162346959d82c4901700dc"
