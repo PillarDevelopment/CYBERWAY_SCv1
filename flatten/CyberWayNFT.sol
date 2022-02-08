@@ -1024,6 +1024,7 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
 
 
 contract CyberWayNFT is ERC721, Governance {
+    using Strings for uint256;
 
     struct CyberWayToken {
         uint8 kind; // 0 - character, 1 - car
@@ -1069,7 +1070,18 @@ contract CyberWayNFT is ERC721, Governance {
         return _nftTokens[tokenId].rand;
     }
 
-    function _baseURI() internal override pure  returns (string memory) {
-        return "https://cybernft.io/"; // todo
+    // return https://cybernft.io/nfts?color=2&rare=3&kind=1
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
+        string memory baseURI = _baseURI();
+        return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI,
+            "color=",uint256(getTokenColor(tokenId)).toString(),
+            "&rare=",uint256(getTokenRand(tokenId)).toString(),
+            "&kind=",uint256(getTokenKind(tokenId)).toString())) : "";
+    }
+
+
+    function _baseURI() internal override pure returns (string memory) {
+        return "https://cybernft.io/nfts?"; // todo
     }
 }
