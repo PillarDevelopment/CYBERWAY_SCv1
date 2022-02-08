@@ -328,7 +328,7 @@
         },
         {
           "internalType": "uint256",
-          "name": "newColorFrame_",
+          "name": "person_",
           "type": "uint256"
         },
         {
@@ -378,7 +378,7 @@
         },
         {
           "internalType": "uint256",
-          "name": "colorFrame",
+          "name": "person",
           "type": "uint256"
         },
         {

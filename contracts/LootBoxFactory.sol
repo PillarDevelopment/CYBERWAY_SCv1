@@ -18,6 +18,8 @@ contract LootBoxFactory is Ownable, Random {
 
     ICyberWayNFT public nft;
     LootBox[] public boxes;
+    uint16 characters;
+    uint16 cars;
 
     address payable public seller;
 
@@ -27,10 +29,12 @@ contract LootBoxFactory is Ownable, Random {
     constructor(address _nft) {
         nft = ICyberWayNFT(_nft);
         seller = payable(msg.sender);
-        _addBox([330, 363, 365, 935,995, 1000], 64000000000000000, 20000);
+        _addBox([330, 363, 365, 935, 995, 1000], 64000000000000000, 20000);
         _addBox([270, 360, 366, 836, 986, 1000], 160000000000000000, 5000);
         _addBox([270, 450, 490, 760, 960, 1000], 430000000000000000, 1000);
         _addBox([0, 250, 600, 600, 600, 1000], 1050000000000000000, 400);
+        cars = 4;
+        characters = 10;
     }
 
 
@@ -44,9 +48,9 @@ contract LootBoxFactory is Ownable, Random {
         require(boxes[_boxId].price == msg.value, "LootBox: wrong purchase amount");
         require(boxes[_boxId].currentCount < boxes[_boxId].maxCount, "LootBox: box limit is exhausted");
 
-        (uint8 tokenKind, uint8 tokenColor, uint8 tokenRand) = _rand(_boxId); // got token parameters
+        (uint8 tokenKind, uint8 tokenPerson, uint8 tokenRand) = _rand(_boxId); // got token parameters
 
-        uint256 tokenId = nft.mint(msg.sender, tokenKind, tokenColor, tokenRand);
+        uint256 tokenId = nft.mint(msg.sender, tokenKind, tokenPerson, tokenRand);
         Address.sendValue(seller, msg.value);
 
         boxes[_boxId].currentCount += 1;
@@ -73,6 +77,16 @@ contract LootBoxFactory is Ownable, Random {
         emit NewSeller(newSeller_);
     }
 
+    function updateCarsCount(uint16 count) public onlyOwner {
+        require(count >= 0, "Error count");
+        cars = count;
+    }
+
+    function updateCharactersCount(uint16 count) public onlyOwner {
+        require(count >= 0, "Error count");
+        characters = count;
+    }
+
 
     function withdrawFactoryBalance() public onlyOwner {
         Address.sendValue(seller, address(this).balance);
@@ -88,6 +102,13 @@ contract LootBoxFactory is Ownable, Random {
         return boxes[boxId_].price;
     }
 
+    function getCarsCount() public view returns(uint16) {
+        return cars;
+    }
+
+    function getCharactersCount() public view returns(uint16) {
+        return characters;
+    }
 
     function _addBox(uint16[6] memory rand_, uint256 price_, uint256 maxCount_) private {
         LootBox memory newBox = LootBox({rand: rand_, price: price_, maxCount: maxCount_, currentCount:0});
@@ -95,11 +116,17 @@ contract LootBoxFactory is Ownable, Random {
     }
 
 
-    function _rand(uint256 _boxId) private returns(uint8 kind, uint8 color, uint8 rand) {
+    function _rand(uint256 _boxId) private returns(uint8 kind, uint8 person, uint8 rand) {
         uint8[2] memory result_ = _generateRarities(boxes[_boxId].rand);
         kind = result_[0];
         rand = result_[1];
-        color =  _generateColor();
+        person = 0;
+        if (kind == 0) {
+            person =  _generateCharacter();
+        }
+        if (kind == 1) {
+            person =  _generateCar();
+        }
     }
 
 
@@ -129,25 +156,13 @@ contract LootBoxFactory is Ownable, Random {
     }
 
 
-    function _generateColor() private returns(uint8) {
-        uint8 result_; // kind / rand
-        uint256 chance = _randMod(1000);
+    function _generateCar() private returns(uint8) {
+        require(cars > 0, "Error cars count eq 0");
+        return _randMod(cars - 1);
+    }
 
-        if (chance <= 1000) {
-            result_ = 0; // Grey
-        }
-        if (chance <= 800) {
-            result_ = 1; // Green
-        }
-        if (chance <= 600) {
-            result_ = 2; // Blue
-        }
-        if (chance <= 400) {
-            result_ = 3; // Purple
-        }
-        if (chance <= 200) {
-            result_ = 4; // Gold
-        }
-        return result_;
+    function _generateCharacter() private returns(uint8) {
+        require(characters > 0, "Error cars count eq 0");
+        return _randMod(characters - 1);
     }
 }

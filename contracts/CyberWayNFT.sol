@@ -9,7 +9,7 @@ contract CyberWayNFT is ERC721, Governance {
 
     struct CyberWayToken {
         uint8 kind; // 0 - character, 1 - car
-        uint8 colorFrame; // Grey, Green, Blue, Purple, Gold
+        uint8 person; // number of person
         uint8 rand; // 5 Common,Uncommon,Rare,Epic,Legendary
     }
 
@@ -21,9 +21,9 @@ contract CyberWayNFT is ERC721, Governance {
 
     function mint(address to,
                     uint8 kind_,
-                    uint8 newColorFrame_,
+                    uint8 person_,
                     uint8 rand_) external onlyGovernance returns(uint256) {
-        CyberWayToken memory cyberToken = CyberWayToken({kind: kind_, colorFrame: newColorFrame_, rand: rand_});
+        CyberWayToken memory cyberToken = CyberWayToken({kind: kind_, person: person_, rand: rand_});
         _nftTokens.push(cyberToken);
         uint256 tokenId =  _nftTokens.length - 1;
         _mint(to, tokenId);
@@ -42,8 +42,8 @@ contract CyberWayNFT is ERC721, Governance {
     }
 
 
-    function getTokenColor(uint256 tokenId) public view returns(uint8) {
-        return _nftTokens[tokenId].colorFrame;
+    function getTokenPerson(uint256 tokenId) public view returns(uint8) {
+        return _nftTokens[tokenId].person;
     }
 
 
@@ -55,7 +55,7 @@ contract CyberWayNFT is ERC721, Governance {
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
         require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
         string memory baseURI = _baseURI();
-        return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI,"color=",uint256(getTokenColor(tokenId)).toString(),"&rare=",uint256(getTokenRand(tokenId)).toString(),"&kind=",uint256(getTokenKind(tokenId)).toString())) : "";
+        return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI,"person=",uint256(getTokenPerson(tokenId)).toString(),"&rare=",uint256(getTokenRand(tokenId)).toString(),"&kind=",uint256(getTokenKind(tokenId)).toString())) : "";
     }
 
 
