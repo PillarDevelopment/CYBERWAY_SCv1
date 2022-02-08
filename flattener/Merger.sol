@@ -1,6 +1,27 @@
-// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
+// SPDX-License-Identifier: MIXED
 
+// File contracts/ICyberWayNFT.sol
+// License-Identifier: MIT
 pragma solidity ^0.8.0;
+
+interface ICyberWayNFT {
+
+    function transferFrom(address from, address to, uint256 tokenId) external;
+
+    function mint(address to, uint8 kind_, uint8 newColorFrame_, uint8 rand_) external returns(uint256);
+
+    function burn(uint256 tokenId) external;
+
+    function getTokenKind(uint256 tokenId) external view returns(uint8);
+
+    function getTokenColor(uint256 tokenId) external view returns(uint8);
+
+    function getTokenRand(uint256 tokenId) external view returns(uint8);
+}
+
+// File @openzeppelin/contracts/utils/Context.sol@v4.3.3
+// License-Identifier: MIT
+
 
 /**
  * @dev Provides information about the current execution context, including the
@@ -21,6 +42,10 @@ abstract contract Context {
         return msg.data;
     }
 }
+
+// File @openzeppelin/contracts/access/Ownable.sol@v4.3.3
+// License-Identifier: MIT
+
 
 /**
  * @dev Contract module which provides a basic access control mechanism, where
@@ -88,20 +113,8 @@ abstract contract Ownable is Context {
     }
 }
 
-interface ICyberWayNFT {
-
-    function transferFrom(address from, address to, uint256 tokenId) external;
-
-    function mint(address to, uint8 kind_, uint8 person_, uint8 rand_) external returns(uint256);
-
-    function burn(uint256 tokenId) external;
-
-    function getTokenKind(uint256 tokenId) external view returns(uint8);
-
-    function getTokenColor(uint256 tokenId) external view returns(uint8);
-
-    function getTokenRand(uint256 tokenId) external view returns(uint8);
-}
+// File contracts/Merger.sol
+// License-Identifier: MIT
 
 
 contract Merger is Ownable {
