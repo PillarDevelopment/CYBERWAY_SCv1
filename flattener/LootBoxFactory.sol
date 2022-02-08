@@ -1,4 +1,7 @@
-// SPDX-License-Identifier-FLATTEN-SUPPRESS-WARNING: MIT
+// SPDX-License-Identifier: MIXED
+
+// File @openzeppelin/contracts/utils/Context.sol@v4.3.3
+// License-Identifier: MIT
 
 pragma solidity ^0.8.0;
 
@@ -22,30 +25,78 @@ abstract contract Context {
     }
 }
 
-contract Random {
+// File @openzeppelin/contracts/access/Ownable.sol@v4.3.3
+// License-Identifier: MIT
 
-    uint256 private _randNonce = 0;
 
-    function _randMod(uint256 modulus) internal returns(uint256) {
-        _randNonce++;
-        return uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender, _randNonce))) % modulus;}
+/**
+ * @dev Contract module which provides a basic access control mechanism, where
+ * there is an account (an owner) that can be granted exclusive access to
+ * specific functions.
+ *
+ * By default, the owner account will be the one that deploys the contract. This
+ * can later be changed with {transferOwnership}.
+ *
+ * This module is used through inheritance. It will make available the modifier
+ * `onlyOwner`, which can be applied to your functions to restrict their use to
+ * the owner.
+ */
+abstract contract Ownable is Context {
+    address private _owner;
+
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+
+    /**
+     * @dev Initializes the contract setting the deployer as the initial owner.
+     */
+    constructor() {
+        _setOwner(_msgSender());
+    }
+
+    /**
+     * @dev Returns the address of the current owner.
+     */
+    function owner() public view virtual returns (address) {
+        return _owner;
+    }
+
+    /**
+     * @dev Throws if called by any account other than the owner.
+     */
+    modifier onlyOwner() {
+        require(owner() == _msgSender(), "Ownable: caller is not the owner");
+        _;
+    }
+
+    /**
+     * @dev Leaves the contract without owner. It will not be possible to call
+     * `onlyOwner` functions anymore. Can only be called by the current owner.
+     *
+     * NOTE: Renouncing ownership will leave the contract without an owner,
+     * thereby removing any functionality that is only available to the owner.
+     */
+    function renounceOwnership() public virtual onlyOwner {
+        _setOwner(address(0));
+    }
+
+    /**
+     * @dev Transfers ownership of the contract to a new account (`newOwner`).
+     * Can only be called by the current owner.
+     */
+    function transferOwnership(address newOwner) public virtual onlyOwner {
+        require(newOwner != address(0), "Ownable: new owner is the zero address");
+        _setOwner(newOwner);
+    }
+
+    function _setOwner(address newOwner) private {
+        address oldOwner = _owner;
+        _owner = newOwner;
+        emit OwnershipTransferred(oldOwner, newOwner);
+    }
 }
 
-
-interface ICyberWayNFT {
-
-    function transferFrom(address from, address to, uint256 tokenId) external;
-
-    function mint(address to, uint8 kind_, uint8 newColorFrame_, uint8 rand_) external returns(uint256);
-
-    function burn(uint256 tokenId) external;
-
-    function getTokenKind(uint256 tokenId) external view returns(uint8);
-
-    function getTokenColor(uint256 tokenId) external view returns(uint8);
-
-    function getTokenRand(uint256 tokenId) external view returns(uint8);
-}
+// File @openzeppelin/contracts/utils/Address.sol@v4.3.3
+// License-Identifier: MIT
 
 
 /**
@@ -55,7 +106,7 @@ library Address {
     /**
      * @dev Returns true if `account` is a contract.
      *
-     * [////IMPORTANT]
+     * [IMPORTANT]
      * ====
      * It is unsafe to assume that an address for which this function returns
      * false is an externally-owned account (EOA) and not a contract.
@@ -92,7 +143,7 @@ library Address {
      *
      * https://diligence.consensys.net/posts/2019/09/stop-using-soliditys-transfer-now/[Learn more].
      *
-     * ////IMPORTANT: because control is transferred to `recipient`, care must be
+     * IMPORTANT: because control is transferred to `recipient`, care must be
      * taken to not create reentrancy vulnerabilities. Consider using
      * {ReentrancyGuard} or the
      * https://solidity.readthedocs.io/en/v0.5.11/security-considerations.html#use-the-checks-effects-interactions-pattern[checks-effects-interactions pattern].
@@ -261,71 +312,40 @@ library Address {
     }
 }
 
-/**
- * @dev Contract module which provides a basic access control mechanism, where
- * there is an account (an owner) that can be granted exclusive access to
- * specific functions.
- *
- * By default, the owner account will be the one that deploys the contract. This
- * can later be changed with {transferOwnership}.
- *
- * This module is used through inheritance. It will make available the modifier
- * `onlyOwner`, which can be applied to your functions to restrict their use to
- * the owner.
- */
-abstract contract Ownable is Context {
-    address private _owner;
+// File contracts/ICyberWayNFT.sol
+// License-Identifier: MIT
 
-    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+interface ICyberWayNFT {
 
-    /**
-     * @dev Initializes the contract setting the deployer as the initial owner.
-     */
-    constructor() {
-        _setOwner(_msgSender());
-    }
+    function transferFrom(address from, address to, uint256 tokenId) external;
 
-    /**
-     * @dev Returns the address of the current owner.
-     */
-    function owner() public view virtual returns (address) {
-        return _owner;
-    }
+    function mint(address to, uint8 kind_, uint8 newColorFrame_, uint8 rand_) external returns(uint256);
 
-    /**
-     * @dev Throws if called by any account other than the owner.
-     */
-    modifier onlyOwner() {
-        require(owner() == _msgSender(), "Ownable: caller is not the owner");
-        _;
-    }
+    function burn(uint256 tokenId) external;
 
-    /**
-     * @dev Leaves the contract without owner. It will not be possible to call
-     * `onlyOwner` functions anymore. Can only be called by the current owner.
-     *
-     * NOTE: Renouncing ownership will leave the contract without an owner,
-     * thereby removing any functionality that is only available to the owner.
-     */
-    function renounceOwnership() public virtual onlyOwner {
-        _setOwner(address(0));
-    }
+    function getTokenKind(uint256 tokenId) external view returns(uint8);
 
-    /**
-     * @dev Transfers ownership of the contract to a new account (`newOwner`).
-     * Can only be called by the current owner.
-     */
-    function transferOwnership(address newOwner) public virtual onlyOwner {
-        require(newOwner != address(0), "Ownable: new owner is the zero address");
-        _setOwner(newOwner);
-    }
+    function getTokenColor(uint256 tokenId) external view returns(uint8);
 
-    function _setOwner(address newOwner) private {
-        address oldOwner = _owner;
-        _owner = newOwner;
-        emit OwnershipTransferred(oldOwner, newOwner);
-    }
+    function getTokenRand(uint256 tokenId) external view returns(uint8);
 }
+
+// File contracts/utils/Random.sol
+// License-Identifier: MIT
+
+contract Random {
+
+    uint256 private _randNonce = 0;
+
+    function _randMod(uint256 modulus) internal returns(uint256) {
+        _randNonce++;
+        return uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender, _randNonce))) % modulus;}
+}
+
+// File contracts/LootBoxFactory.sol
+// License-Identifier: MIT
+
+
 
 contract LootBoxFactory is Ownable, Random {
 
