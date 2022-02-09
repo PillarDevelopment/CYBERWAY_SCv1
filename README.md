@@ -27,5 +27,5 @@ npx hardhat flat --output flattener/{{contract_name}}.sol contracts/{{contract_n
 ### Deploy
 check CyberToken(ERC20) address in `CYBER_TOKEN` var
 ```
-npx hardhat run scripts/deploy.js --network bsc
+npx hardhat run deploy/deploy.js --network bsc
 ```

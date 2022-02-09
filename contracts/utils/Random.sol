@@ -7,5 +7,12 @@ contract Random {
 
     function _randMod(uint256 modulus) internal returns(uint256) {
         _randNonce++;
-        return uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender, _randNonce))) % modulus;}
+        return uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender, _randNonce))) % modulus;
+    }
+
+    function _randModSmall(uint16 modulus) internal returns(uint16) {
+        _randNonce++;
+        return uint16(uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender, _randNonce))) % modulus);
+    }
+
 }

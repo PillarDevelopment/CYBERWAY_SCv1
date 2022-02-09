@@ -19,7 +19,6 @@ contract Farming is Ownable{
     event NFTDeposited(address sender, uint256 id, uint256 startBlock);
     event NFTWithdrawn(address sender, uint256 id, uint256 amount);
     event NFTEmergencyWithdrawn(address sender, uint256 id, uint256 block);
-    event NFTDeposited();
 
     constructor(address nft, address token) {
         cyberNft = ICyberWayNFT(nft);
