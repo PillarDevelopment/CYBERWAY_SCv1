@@ -55,11 +55,11 @@ contract CyberWayNFT is ERC721, Governance {
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
         require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
         string memory baseURI = _baseURI();
-        return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI,"person=",uint256(getTokenPerson(tokenId)).toString(),"&rare=",uint256(getTokenRand(tokenId)).toString(),"&kind=",uint256(getTokenKind(tokenId)).toString())) : "";
+        return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI,uint256(getTokenPerson(tokenId)).toString(),"_",uint256(getTokenRand(tokenId)).toString(),"_",uint256(getTokenKind(tokenId)).toString())) : "";
     }
 
 
     function _baseURI() internal override pure returns (string memory) {
-        return "https://cyberwaynft.com/asset?"; // todo
+        return "https://cyberwaynft.com/asset/"; // todo
     }
 }

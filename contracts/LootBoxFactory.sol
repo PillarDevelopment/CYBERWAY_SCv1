@@ -29,11 +29,11 @@ contract LootBoxFactory is Ownable, Random {
     constructor(address _nft) {
         nft = ICyberWayNFT(_nft);
         seller = payable(msg.sender);
-        _addBox([330, 363, 365, 935, 995, 1000], 64000000000000000, 20000);
-        _addBox([270, 360, 366, 836, 986, 1000], 160000000000000000, 5000);
-        _addBox([270, 450, 490, 760, 960, 1000], 430000000000000000, 1000);
-        _addBox([0, 250, 600, 600, 600, 1000], 1050000000000000000, 400);
-        cars = 4;
+        _addBox([330, 363, 365, 935, 995, 1000], 95000000000000000, 40001);
+        _addBox([270, 360, 366, 836, 986, 1000], 190000000000000000, 15000);
+        _addBox([270, 450, 490, 760, 960, 1000], 470000000000000000, 3500);
+        _addBox([0, 250, 600, 600, 600, 1000], 1667000000000000000, 1000);
+        cars = 6;
         characters = 10;
     }
 
@@ -115,7 +115,7 @@ contract LootBoxFactory is Ownable, Random {
         boxes.push(newBox);
     }
 
-
+    // 0 - character, 1 - car
     function _rand(uint256 _boxId) private returns(uint8 kind, uint16 person, uint8 rand) {
         uint8[2] memory result_ = _generateRarities(boxes[_boxId].rand);
         kind = result_[0];
